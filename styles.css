@@ -1,0 +1,98 @@
+
+* {
+  min-width: 0;
+}
+
+/* view es el contenedor de toda la vista */
+#view{
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    "nav";
+    margin: 0;
+    background-color: gray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header{
+    grid-area: header;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: orange;
+    border-radius: 10px;
+    margin: 5px;
+    height: 10vh;
+}
+
+nav{
+    grid-area: nav;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    padding: 1px;
+    background-color: greenyellow;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+main{
+    grid-area: main;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: cyan;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+footer{
+    grid-area: footer;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-color: purple;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+textarea{
+    width: 80%;
+    height: 200px;
+}
+
+button{
+    border-radius: 10px;
+    margin:1px;
+}
+
+.icono{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+span{
+    display:none;
+}
+
+@media (min-width: 667px){  /*Para iPhone SE en horizontal*/
+    #view{
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+        "nav"
+        "header"
+        "main"
+        "footer";
+    }
+}
+
+@media (min-width: 768px){
+    span{
+        display: block;
+    }
+}

@@ -1,0 +1,7 @@
+Consideraciones de diseño:
+
+1. Las vistas devuelven nodos (no strings)
+2. El render centraliza el DOM
+3. Eventos en JS, no inline
+4. Componentes chicos y puros
+5. HTML declarativo usando template (no createElement a mano)
