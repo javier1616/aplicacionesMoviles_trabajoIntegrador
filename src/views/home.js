@@ -8,7 +8,6 @@ export function Home() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML = Navbar();
     viewContainer.innerHTML += Header();
 
     viewContainer.innerHTML += loadHome();

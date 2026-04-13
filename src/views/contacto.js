@@ -7,7 +7,6 @@ export function Contacto() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML = Navbar();
     viewContainer.innerHTML += Header();
 
     viewContainer.innerHTML += loadContacto();

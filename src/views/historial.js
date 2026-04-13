@@ -7,7 +7,7 @@ export function Historial() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML = Navbar();
+  
     viewContainer.innerHTML += Header();
 
     viewContainer.innerHTML += loadHistorial();

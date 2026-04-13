@@ -6,7 +6,7 @@ export function Busqueda() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML = Navbar();
+  
     viewContainer.innerHTML += Header();
 
     viewContainer.innerHTML += loadBusqueda();

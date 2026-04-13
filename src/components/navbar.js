@@ -1,7 +1,6 @@
 
 export function Navbar() {
   return `
-    <nav>
       <button onclick="window.navigate('/')">
         <img class="icono" src="./src/assets/icons/garaje.png" />
         <span>Home</span>
@@ -25,6 +24,5 @@ export function Navbar() {
       <button onclick="window.navigate('/wishList')">
         <img class="icono" src="./src/assets/icons/boxes.png" />
         <span>WishList</span>
-      </button>
-    </nav>`;
+      </button>`;
 }
