@@ -8,7 +8,7 @@ export function Home() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML += Header();
+    viewContainer.innerHTML += Header("Header Home");
 
     viewContainer.innerHTML += loadHome();
 

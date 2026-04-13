@@ -1,5 +1,6 @@
 
 import { getCircuitos,getPilotos } from "./busqueda.behavior.js";
+import { contactoBehavior } from "./contacto.behavior.js";
 
 export function loadBehavior(path) {
 
@@ -10,6 +11,9 @@ export function loadBehavior(path) {
 
             document.getElementById("circuitos_btn")
             .addEventListener("click", () => getCircuitos());
+        break;
+        case "/contact":
+            contactoBehavior();
         break;
     }
 }

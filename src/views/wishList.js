@@ -8,7 +8,7 @@ export function WishList() {
     const viewContainer = document.createElement("div");
 
    
-    viewContainer.innerHTML += Header();
+    viewContainer.innerHTML += Header("Header WishList");
 
     viewContainer.innerHTML += loadWishList();
 

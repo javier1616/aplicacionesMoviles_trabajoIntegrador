@@ -7,7 +7,7 @@ export function Contacto() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML += Header();
+    viewContainer.innerHTML += Header("Información de Contacto");
 
     viewContainer.innerHTML += loadContacto();
 
@@ -18,5 +18,12 @@ export function Contacto() {
 
 
 function loadContacto() {
-    return `<main><h1>Contacto</h1></main>`
+    return `<main>
+                    <h5> Desarrolladores: </h5>
+                    <h5> Email: </h5>
+                    <h5> Teléfono: </h5>
+                    <h5> Dirección: </h5>
+                <h1>Ubicación</h1>
+                <div id="map"></div>
+            </main>`
 }
