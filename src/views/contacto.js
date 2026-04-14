@@ -7,7 +7,7 @@ export function Contacto() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML += Header("Información de Contacto");
+    viewContainer.innerHTML += Header("Contacto");
 
     viewContainer.innerHTML += loadContacto();
 
@@ -19,11 +19,14 @@ export function Contacto() {
 
 function loadContacto() {
     return `<main>
-                    <h5> Desarrolladores: </h5>
-                    <h5> Email: </h5>
-                    <h5> Teléfono: </h5>
-                    <h5> Dirección: </h5>
-                <h1>Ubicación</h1>
+                <h3>Ubicación</h3>
                 <div id="map"></div>
+                <h3> Contactanos</h3>
+                <ul id="datosDeContacto">
+                    <li> Desarrolladores:<br>Mendez Gabriel / Solís Javier </li>
+                    <li> Email: aplicacionesmoviles@unaj.edu.ar</li>
+                    <li> Teléfono: (+54) 11 1234 5678</li>
+                    <li> Dirección: Calle 14, 1009 La Plata<br>Bs. As. Argentina </li>
+                </ul>
             </main>`
 }

@@ -7,7 +7,7 @@ export function Detalle() {
     
     const viewContainer = document.createElement("div");
 
-    viewContainer.innerHTML += Header("Header Detalle");
+    viewContainer.innerHTML += Header("Detalle");
 
     viewContainer.innerHTML += loadDetalle();
 
