@@ -1,12 +1,12 @@
 
 :root {
-  --nav-height: 60px;
-  --nav-z-index: 100;
-  --map-z-index: 0;
+    --nav-height: 60px;
+    --nav-z-index: 100;
+    --map-z-index: 0;
 }
 
 * {
-  min-width: 0;
+    min-width: 0;
 }
 
 body{
@@ -15,6 +15,7 @@ body{
     grid-template-rows: 1fr;
     grid-template-areas:
     "view";
+    margin: 0;
 }
 
 /* view es el contenedor de toda la vista */
@@ -22,7 +23,7 @@ body{
     grid-area:view;
     display: grid;
     /*height: 90vh;  /* si la pagina no requiere scrollear con 90vh se ve bien, header, main y footer */
-    height: calc( 100vh - var(--nav-height));
+    height: calc( 100dvh - var(--nav-height));
     width: 100%;
     padding-bottom: var(--nav-height);
     grid-template-rows: auto 1fr auto;
