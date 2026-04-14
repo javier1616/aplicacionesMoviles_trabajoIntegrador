@@ -21,7 +21,8 @@ body{
 #view{
     grid-area:view;
     display: grid;
-    height: 90vh;  /* si la pagina no requiere scrollear con 90vh se ve bien, header, main y footer */
+    /*height: 90vh;  /* si la pagina no requiere scrollear con 90vh se ve bien, header, main y footer */
+    height: calc( 100vh - var(--nav-height));
     width: 100%;
     padding-bottom: var(--nav-height);
     grid-template-rows: auto 1fr auto;
