@@ -121,6 +121,17 @@ ul{
     margin: 0;
 }
 
+.favorite-card{
+    background-color: green;
+    border-radius: 10px;
+}
+
+.history-card{
+    background-color: blue;
+    border-radius: 10px;
+}
+
+
 @media (min-width: 667px){  /*Para iPhone SE en horizontal*/
     #view{
         grid-template-rows: auto 1fr auto;
