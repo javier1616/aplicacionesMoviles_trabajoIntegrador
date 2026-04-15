@@ -5,8 +5,20 @@ import { favoriteCard } from "../components/favoriteCard.js";
 
 export function WishList() {
 
-    //testeo de almacenamiento en localStorage
-    const favorite_pages = ["home", "search", "detail"];
+      //testeo de almacenamiento en localStorage
+    const item1 = { img:"./src/assets/icons/crono1.png",
+                    title:"Max Verstappen",
+                    date:"12/3/2026"
+    };
+    const item2 = { img:"./src/assets/icons/crono1.png",
+                    title:"Albert Park Circuit",
+                    date:"12/3/2026"
+    };
+    const item3 = { img:"./src/assets/icons/crono1.png",
+                    title:"Monza Circuit",
+                    date:"12/3/2026"
+    };
+    const favorite_pages = [item1, item2, item3];
     localStorage.setItem("favorite_array", JSON.stringify(favorite_pages));
 
     const viewContainer = document.createElement("div");

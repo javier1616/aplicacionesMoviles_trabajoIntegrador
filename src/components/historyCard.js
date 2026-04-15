@@ -1,12 +1,12 @@
 
 export function historyCard(data) {
     return`
-    <div class="history-card" style="width: 18rem;">
-        <img src="./src/assets/icons/crono1.png" class="card-img-top" alt="imagen" style="width: 10px; height: 10px;">
+    <div class="history-card">
+        <img src=${data.img} class="card-img-top" alt="imagen">
         <div class="card-body">
-        <h5 class="card-title">Título</h5>
+            <h3 class="card-title">${data.title}</h3>
             <p class="card-text">
-                Página visitada: ${data}
+                Página visitada: ${data.date}
             </p>
         </div>
     </div>`;

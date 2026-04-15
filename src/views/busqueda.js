@@ -23,6 +23,7 @@ function loadBusqueda() {
                 <h1>Busqueda</h1>
                 <button id="pilotos_btn">Pilotos</button>
                 <button id="circuitos_btn">Circuitos</button>
-                <textarea id="response_data" name="response"></textarea>   
+                <textarea id="response_data" name="response"></textarea> 
+                <div id="results_container"></div>  
             </main>`
 }
