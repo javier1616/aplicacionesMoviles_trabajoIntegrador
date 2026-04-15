@@ -258,21 +258,19 @@ ul{
 
 /* ROTACIÓN */
 .accordion-item.active .accordion-icon {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* BODY */
 .accordion-item-body {
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease;
-  padding: 0 15px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    padding: 0 15px;
+    display:grid;
+    place-items:center;
 }
 
-/* CONTENIDO INTERNO */
-.accordion-body p {
-  margin: 15px 0;
-}
 
 /* ----------------------------------------------------------- */
 
