@@ -67,7 +67,7 @@ main{
     grid-area: main;
     display: grid;
     place-items: center;
-    padding: 20px;
+    /*padding: 20px;*/
     background-color: cyan;
     border-radius: 10px;
     margin: 5px;
@@ -98,7 +98,7 @@ button{
     height: 3em;
 }
 
-span{
+.navbar-icon-description{
     display:none;
 }
 
@@ -210,6 +210,73 @@ ul{
     padding: 0.5em;
 }
 
+/* ----------------------------------------------------------- */
+/*                          ACCORDION                          */
+/* ----------------------------------------------------------- */
+
+#accordion-container{
+    width:100%;
+}
+
+.accordion {
+    width: 100%;
+    /*max-width: 600px;*/
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #888;
+}
+
+/* HEADER */
+.accordion-item-header {
+  width: 100%;
+  padding: 15px;
+  background: #3b8ada;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background 0.3s ease;
+}
+
+/*
+.accordion-item-header:hover {
+  background: #687d91;
+}*/
+
+/* ICONO */
+.accordion-icon {
+  transition: transform 0.3s ease;
+}
+
+/* ROTACIÓN */
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* BODY */
+.accordion-item-body {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+  padding: 0 15px;
+}
+
+/* CONTENIDO INTERNO */
+.accordion-body p {
+  margin: 15px 0;
+}
+
+/* ----------------------------------------------------------- */
+
+
 @media (min-width: 667px){  /*Para iPhone SE en horizontal*/
     #view{
         grid-template-rows: auto 1fr auto;
@@ -229,7 +296,7 @@ ul{
 }
 
 @media (min-width: 768px){
-    span{
+    .navbar-icon-description{
         display: block;
     }
 }

@@ -3,26 +3,26 @@ export function Navbar() {
   return `
       <button onclick="window.navigate('/')">
         <img class="icono" src="./src/assets/icons/garaje.png" />
-        <span>Home</span>
+        <span class="navbar-icon-description">Home</span>
       </button>
       <button onclick="window.navigate('/search')">
         <img class="icono" src="./src/assets/icons/search.png" />
-        <span>Busqueda</span>
+        <span class="navbar-icon-description">Busqueda</span>
       </button>
       <button onclick="window.navigate('/contact')">
         <img class="icono" src="./src/assets/icons/casco.png" />
-        <span>Contacto</span>
+        <span class="navbar-icon-description">Contacto</span>
       </button>
       <button onclick="window.navigate('/detail')">
         <img class="icono" src="./src/assets/icons/boxes.png" />
-        <span>Detalle</span>
+        <span class="navbar-icon-description">Detalle</span>
       </button>
       <button onclick="window.navigate('/history')">
         <img class="icono" src="./src/assets/icons/boxes.png" />
-        <span>Historial</span>
+        <span class="navbar-icon-description">Historial</span>
       </button>
       <button onclick="window.navigate('/wishList')">
         <img class="icono" src="./src/assets/icons/boxes.png" />
-        <span>WishList</span>
+        <span class="navbar-icon-description">WishList</span>
       </button>`;
 }
