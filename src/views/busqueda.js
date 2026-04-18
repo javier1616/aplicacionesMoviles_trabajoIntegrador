@@ -20,12 +20,6 @@ function loadBusqueda() {
 
     return `<main>
                 <div id="accordion-container">${accordion()}</div>
-                <button id="pilotos_btn">Pilotos</button>
-                <button id="circuitos_btn">Circuitos</button>
-                <textarea id="response_data" name="response"></textarea> 
-                <div id="results_container"></div>  
             </main>`;
-    
-
 }
 

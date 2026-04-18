@@ -1,13 +1,15 @@
 
 export function driverCard(data) {
     return`
-    <div class="driver-card">
-        <img src="./src/assets/icons/casco.png" class="card-img-top" alt="imagen">
+    <div class="driver-card card" data-id=${data.driverId}>
+        <img src="./src/assets/icons/casco2.png" class="card-img-icon" alt="imagen">
         <div class="card-body">
-        <h5 class="card-title"> Name: ${data.givenName} ${data.driverId}</h5>
-            <p class="card-text">
-                Página visitada: "otros datos"
-            </p>
+            <ul class="card-description">
+                <li> Name: ${data.givenName} ${data.familyName}</li>
+                <li> Code: ${data.code} </li>
+                <li> Number: ${data.permanentNumber}</li>
+                <li> Nacionality: ${data.nationality} </li>
+            <ul>
         </div>
     </div>`;
 }

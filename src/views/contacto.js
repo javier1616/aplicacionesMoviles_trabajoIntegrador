@@ -19,14 +19,15 @@ export function Contacto() {
 
 function loadContacto() {
     return `<main>
-                <h3>Ubicación</h3>
-                <div id="map"></div>
-                <h3> Contactanos</h3>
-                <ul id="datosDeContacto">
-                    <li> Desarrolladores:<br>Mendez Gabriel / Solís Javier </li>
-                    <li> Email: aplicacionesmoviles@unaj.edu.ar</li>
-                    <li> Teléfono: (+54) 11 1234 5678</li>
-                    <li> Dirección: Calle 14, 1009 La Plata<br>Bs. As. Argentina </li>
-                </ul>
+                <div id="location-container">
+                    <div id="map"></div>
+                    <h3>Información de contacto</h3>
+                    <ul id="datosDeContacto">
+                        <li> Mendez Gabriel / Solís Javier </li>
+                        <li> aplicacionesmoviles@unaj.edu.ar</li>
+                        <li> (+54) 11 1234 5678</li>
+                        <li> Calle 14, 1009 La Plata<br>Bs. As. Argentina </li>
+                    </ul>
+                </div>
             </main>`
 }

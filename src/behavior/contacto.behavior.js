@@ -1,9 +1,7 @@
 
 export async function contactoBehavior() {
 
-    console.log("Pasa por la funcion contactoBehavior");
-
-    var map = L.map('map').setView([-34.9215, -57.9536], 13);
+    var map = L.map('map').setView([-34.9215, -57.9536], 12);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,

@@ -1,28 +1,28 @@
 
 export function Navbar() {
   return `
-      <button onclick="window.navigate('/')">
-        <img class="icono" src="./src/assets/icons/garaje.png" />
+      <button class="navbar-button" onclick="window.navigate('/')">
+        <img class="icono" src="./src/assets/icons/banderas.png" />
         <span class="navbar-icon-description">Home</span>
       </button>
-      <button onclick="window.navigate('/search')">
-        <img class="icono" src="./src/assets/icons/search.png" />
+      <button class="navbar-button" onclick="window.navigate('/search')">
+        <img class="icono" src="./src/assets/icons/binoculares3.png" />
         <span class="navbar-icon-description">Busqueda</span>
       </button>
-      <button onclick="window.navigate('/contact')">
-        <img class="icono" src="./src/assets/icons/casco.png" />
-        <span class="navbar-icon-description">Contacto</span>
-      </button>
-      <button onclick="window.navigate('/detail')">
+      <button class="navbar-button" onclick="window.navigate('/detail')">
         <img class="icono" src="./src/assets/icons/boxes.png" />
         <span class="navbar-icon-description">Detalle</span>
       </button>
-      <button onclick="window.navigate('/history')">
-        <img class="icono" src="./src/assets/icons/boxes.png" />
+      <button class="navbar-button" onclick="window.navigate('/wishList')">
+        <img class="icono" src="./src/assets/icons/medalla.png" />
+        <span class="navbar-icon-description">WishList</span>
+      </button>
+      <button class="navbar-button" onclick="window.navigate('/history')">
+        <img class="icono" src="./src/assets/icons/crono1.png" />
         <span class="navbar-icon-description">Historial</span>
       </button>
-      <button onclick="window.navigate('/wishList')">
-        <img class="icono" src="./src/assets/icons/boxes.png" />
-        <span class="navbar-icon-description">WishList</span>
+      <button class="navbar-button" onclick="window.navigate('/contact')">
+        <img class="icono" src="./src/assets/icons/location.png" />
+        <span class="navbar-icon-description">Contacto</span>
       </button>`;
 }

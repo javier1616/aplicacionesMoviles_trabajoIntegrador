@@ -23,7 +23,6 @@ export function initRouter() {
   window.addEventListener("popstate", render);  
 }
 
-
 export function render() {
 
     const path = window.location.pathname;  //toma contenido de la URL
