@@ -28,6 +28,7 @@ export const wiki_API = "https://en.wikipedia.org/w/api.php?action=query&prop=pa
 
 //EXAMPLE   --> https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Circuit_of_the_Americas
 
+export const wiki_API_v2 = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 
 
 /*

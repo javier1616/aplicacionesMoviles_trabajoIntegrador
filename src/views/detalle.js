@@ -25,7 +25,7 @@ function loadDetalle() {
                         <button id="favorite_btn">Agregar a favoritos</button>
                     </div>
                     <img src="" alt="imagen" id="detail-img">
-                    <p id="detail_text"></p>
+                    <p id="detail-text"></p>
                 </div>
             </main>`;
 }

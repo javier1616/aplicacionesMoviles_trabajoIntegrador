@@ -365,8 +365,9 @@ li{
 }
 
 #detail-img{
-    width:100px;
-    height:100px;
+    width:15vh;
+    height:auto;
+    border-radius:10px;
 }
 
 

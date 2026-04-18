@@ -1,5 +1,6 @@
 
-
+import { wiki_API, wiki_API_v2 } from "../config.js";  
+import { getImage, getImageAndExtract } from "../api/http.js"
 
 export async function detailBehavior() {
 
@@ -10,6 +11,8 @@ export async function detailBehavior() {
     // {
     //    type: "driver",       --> driver/circuit (por ahora solo esos)
     //    id: card.dataset.id,  --> id relativo al driver/circuit que estoy viendo 
+    //    url:
+    //    name: 
     // };
 
     if(detail_data_view.type)       //primero valido si existe
@@ -20,10 +23,21 @@ export async function detailBehavior() {
         {
 
             const title = document.getElementById('detail-title');
+            const img = document.getElementById('detail-img');
+            const text = document.getElementById('detail-text');
 
-            title.innerHTML = detail_data_view.id; //por ahora es solo para ver si levanta
+            console.log("url en card: " + detail_data_view.url);
 
-            //tengo que hacer los fetches correspondientes
+            const lastPart = detail_data_view.url.split("/").pop();
+
+            //const image_url = await getImage( wiki_API + lastPart);
+            const image_url_and_extract = await getImageAndExtract( wiki_API_v2 + lastPart);
+            const extract = image_url_and_extract.extract;
+            const image_url = image_url_and_extract.image_url;
+
+            title.innerHTML = detail_data_view.name;
+            text.innerHTML = extract;
+            img.src = image_url;       //aqui trae la url de la imagen
 
             return;
 

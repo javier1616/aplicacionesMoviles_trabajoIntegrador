@@ -1,7 +1,7 @@
 
 export function driverCard(data) {
     return`
-    <div class="driver-card card" data-id=${data.driverId}>
+    <div class="driver-card card" data-id=${data.driverId} data-url=${data.url} data-name="${data.givenName} ${data.familyName}">
         <img src="./src/assets/icons/casco2.png" class="card-img-icon" alt="imagen">
         <div class="card-body">
             <ul class="card-description">

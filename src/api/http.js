@@ -19,6 +19,7 @@ export async function request(url, options = {}) {
   return await res.json();
 }
 
+/*
 export async function getPilotos() {
     //let pilotos = await request(jolpica_url_drivers);       // --> POSTA
     let pilotos = drivers_response;       // --> MOCK
@@ -46,6 +47,7 @@ export async function getCircuitos() {
     });
 
 }
+*/
 
 export async function getPilotosPosta(name,season,nacionalidad){
 
@@ -73,4 +75,34 @@ export async function getCircuitosPosta(name,season,pais){
     let circuitos = circuits_response;       // --> MOCK
     
     return circuitos.MRData.CircuitTable.Circuits;
+}
+
+export async function getImage(url){
+
+    let wiki_result = await request(url + "&redirects=1&origin=*");
+    //se le agregan esos parametros para que, si existen redirecciones las siga
+
+    const pages = wiki_result.query.pages;
+
+    // convierto el objeto en array y agarro el primero
+    const page = Object.values(pages)[0];
+
+    const imageUrl = page.original?.source ?? null;  //si no hay imagen devuelve null
+    
+    return imageUrl;
+}
+
+export async function getImageAndExtract(url){
+
+    let wiki_result = await request(url);
+
+    const img_url = wiki_result.thumbnail?.source;
+    const extract = wiki_result.extract;
+
+    const result = {
+        image_url : img_url,
+        extract : extract
+    }
+    
+    return result;
 }

@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const detail_data_view = {  type: "driver",
                                     id: card.dataset.id,
+                                    url: card.dataset.url,
+                                    name: card.dataset.name
         };
 
         localStorage.setItem("detail_view", JSON.stringify(detail_data_view));
