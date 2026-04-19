@@ -5,3 +5,17 @@ Consideraciones de diseño:
 3. Eventos en JS, no inline
 4. Componentes chicos y puros
 5. HTML declarativo usando template (no createElement a mano)
+
+----------------------------------------------------------------------------
+
+LISTA DE PENDIENTES: 
+
+
+- Home (quiza buscar dibujos de escuderías y ver cómo relacionar pilotos con escuderias)
+- Busqueda : hacer funcionar los filtros de busqueda, luego duplicar info a otras páginas
+- Detalles: acomodar la info
+- Historial: ordenar por date mas reciente, si ya esta no agregarlo, actualizar el orden
+- Favoritos: Agregar / Quitar de favoritos
+- Responsive
+- PWA
+

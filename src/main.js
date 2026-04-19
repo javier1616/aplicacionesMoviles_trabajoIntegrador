@@ -32,6 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("detail_view", JSON.stringify(detail_data_view));
 
+        //deberia guardar en historial todos los datos necesarios para mostrar la card...
+        const history_item = {
+                    type : "driver",
+                    id : card.dataset.id,
+                    url : card.dataset.url,
+                    name : card.dataset.name,
+                    img : "./src/assets/icons/casco2.png",
+                   // code :       <li> Code: ${data.code} </li>,
+                   // number :     <li> Number: ${data.permanentNumber}</li>,
+                   // nacionality :   <li> Nacionality: ${data.nationality} </li>,
+                    date : new Date()
+        };
+
+        //por si está vacío
+        const history_array = JSON.parse(localStorage.getItem("history_array")) || [];
+
+
+        console.log("si ya esta no deberia guardarlo, deberia actualizar date");
+        history_array.push(history_item);
+
+        //actualizo history_array
+        localStorage.setItem("history_array", JSON.stringify(history_array));    
+
         window.navigate('/detail');
 
     });
@@ -39,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //renderiza Home
     initRouter();
-  
+
     const nav = document.getElementById("nav");
 
     const nav_component = document.createElement("div");

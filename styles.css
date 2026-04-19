@@ -352,7 +352,7 @@ li{
 
 #detail-container{
     display:grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto auto;
     place-items:center;
 }
 
@@ -362,6 +362,7 @@ li{
     place-items:center;
     margin-top:1em;
     margin-bottom:1em;
+    gap:2em;
 }
 
 #detail-img{
@@ -370,7 +371,12 @@ li{
     border-radius:10px;
 }
 
-
+#favorite-btn{
+    background:transparent;
+    border:none;
+    width:3em;
+    height:auto;
+}
 
 
 

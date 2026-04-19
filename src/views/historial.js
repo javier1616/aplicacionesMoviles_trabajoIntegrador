@@ -5,29 +5,13 @@ import { historyCard } from "../components/historyCard.js";
 
 export function Historial() {
 
-    //testeo de almacenamiento en localStorage
-    const item1 = { img:"./src/assets/icons/crono1.png",
-                    title:"Max Verstappen",
-                    date:"12/3/2026"
-    };
-    const item2 = { img:"./src/assets/icons/crono1.png",
-                    title:"Albert Park Circuit",
-                    date:"12/3/2026"
-    };
-    const item3 = { img:"./src/assets/icons/crono1.png",
-                    title:"Monza Circuit",
-                    date:"12/3/2026"
-    };
-    const history_pages = [item1, item2, item3];
-    localStorage.setItem("history_array", JSON.stringify(history_pages));
-
     const viewContainer = document.createElement("div");
 
     viewContainer.innerHTML += Header("Historial");
 
     let main = `<main>`;
 
-    main += `<p>Historial de páginas visitadas (hardcoded)</p>`;
+    main += `<p>Acordate de mostrarlos en orden reciente de date</p>`;
 
     //toma la info de localStorage
     const history_array = JSON.parse(localStorage.getItem("history_array"));

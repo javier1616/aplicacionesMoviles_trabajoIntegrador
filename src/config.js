@@ -48,3 +48,12 @@ export const wiki_API_v2 = "https://en.wikipedia.org/api/rest_v1/page/summary/"
     "status": "https://api.jolpi.ca/ergast/f1/status"
 
 */
+
+//con esto obtengo la lista de escuderias
+const constructors = "https://api.jolpi.ca/ergast/f1/constructors"
+
+//con esto podes relacionar qué escuderia corresponde a qué piloto
+const results_escuderias_url = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
+
+//con esto averiguas ultima carrera para hacer la consulta anterior
+const ultima_carrera_url = "https://api.jolpi.ca/ergast/f1/current/last/results/"
