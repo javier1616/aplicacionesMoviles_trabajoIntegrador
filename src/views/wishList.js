@@ -5,7 +5,7 @@ import { favoriteCard } from "../components/favoriteCard.js";
 
 export function WishList() {
 
-      //testeo de almacenamiento en localStorage
+    // -----  testeo de almacenamiento en localStorage ------
     const item1 = { img:"./src/assets/icons/crono1.png",
                     title:"Max Verstappen",
                     date:"12/3/2026"
@@ -20,6 +20,9 @@ export function WishList() {
     };
     const favorite_pages = [item1, item2, item3];
     localStorage.setItem("favorite_array", JSON.stringify(favorite_pages));
+    // ------------------------------------------------------
+
+
 
     const viewContainer = document.createElement("div");
 
@@ -27,15 +30,13 @@ export function WishList() {
 
     let main = `<main>`;
 
-    main += `<p>Favoritos (hardcoded)</p>`;
-
     //toma la info de localStorage
     const favorite_array = JSON.parse(localStorage.getItem("favorite_array"));
 
     //valida si existe y tiene datos
     if (favorite_array && favorite_array.length > 0)
     {
-        main += `<div id="favorite_card_container">`;
+        main += `<div id="favorite-card-container">`;
         favorite_array.forEach(element => {
             main += favoriteCard(element);
         });

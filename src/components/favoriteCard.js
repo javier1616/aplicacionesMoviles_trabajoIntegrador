@@ -10,8 +10,9 @@ export function favoriteCard(data) {
             </p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary">I</button>
-            <button class="btn btn-primary">D</button>
+            <button class="btn btn-primary">
+                <img src="./src/assets/icons/basura.png" class="favorite-remove-icon" alt="imagen">
+            </button>
         </div>
     </div>`;
 }

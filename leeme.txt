@@ -11,6 +11,30 @@ Consideraciones de diseño:
 LISTA DE PENDIENTES (Todo lo que falta para terminar la app): 
 
 
+   xxx
+  xxxxx
+   xxx
+   
+
+<p>https://www.formula1.com/en/racing/2026</p>
+                <p>https://www.f1racinghub.com/drivers</p>
+                <p>https://www.f1racinghub.com/about</p>
+                <p>localStorage.setItem("fav", "true");
+                    Así la estrella queda marcada aunque recargues.<p>
+                <ul>
+                    <li>RF01 - Home             X </li>
+                    <li>RF02 - Busqueda 3f      X </li>
+                    <li>RF03 - Resultados       X </li>
+                    <li>RF04 - Detalles         X </li>
+                    <li>RF05 - Favoritos + form X </li>
+                    <li>RF06 - Historial        V </li>
+                    <li>RF07 - Contacto         V </li>
+                    <li>RF08 - Responsive       X </li>
+                    <li>RFXX - PWA              X </li>
+                    
+                </ul>
+
+
  Home
 ----------------------------------------
 - Colocar dibujitos de las escuderias -->
@@ -70,6 +94,9 @@ En ambas variantes, la lista de deseos debe:
 • Permitir eliminar ítems individualmente. 
 • Persistir entre sesiones mediante localStorage.
 
+MOSTRAR, SI ESTA EN FAVORITOS LOS DETALLES DEL FORMULARIO QUE RELLENAS EN LA VISTA DE DETALLES (VER)
+QUE APAREZCA SI ESTA, SI NO ESTA NO.
+
 ----------------------------
 Diseño Responsive
 • Móvil – portrait hasta 480px): 1 o 2 resultado por fila. 
@@ -81,4 +108,10 @@ Diseño Responsive
 LUEGO DE REALIZADOS LOS PUNTOS DE LA LISTA HAY QUE VOLVER A REVISAR EL ENUNCIADO PARA VER SI FALTA ALGO
 
 
+
+
+
  POR ULTIMO ---> Crear PWA (ultimo porque es extra...)
+
+
+

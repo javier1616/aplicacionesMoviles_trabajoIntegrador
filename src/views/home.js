@@ -19,24 +19,69 @@ export function Home() {
 
 function loadHome() {
     return `<main>
-                
-                <p>https://www.formula1.com/en/racing/2026</p>
-                <p>https://www.f1racinghub.com/drivers</p>
-                <p>https://www.f1racinghub.com/about</p>
-                <p>localStorage.setItem("fav", "true");
-                    Así la estrella queda marcada aunque recargues.<p>
-                <ul>
-                    <li>RF01 - Home             X </li>
-                    <li>RF02 - Busqueda 3f      X </li>
-                    <li>RF03 - Resultados       X </li>
-                    <li>RF04 - Detalles         X </li>
-                    <li>RF05 - Favoritos + form X </li>
-                    <li>RF06 - Historial        V </li>
-                    <li>RF07 - Contacto         V </li>
-                    <li>RF08 - Responsive       X </li>
-                    <li>RFXX - PWA              X </li>
-                    
-                </ul>
+                <div id="home-container">
+                    <div>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026alpinelogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026ferrarilogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026mercedeslogowhite.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026cadillaclogowhite.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026audilogowhite.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026williamslogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026racingbullslogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026redbullracinglogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026haasf1teamlogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026mclarenlogo.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                        <button class="home-team-button">
+                            <div class="home-img-team-container">
+                                <img src="./src/assets/img/2026astonmartinlogowhite.avif" class="home-img-team-icon" alt="imagen">
+                            </div>
+                        </button>
+                    </div>
+                </div>
             </main>`
 }
 
