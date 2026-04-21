@@ -31,6 +31,7 @@ export function accordion(){
                     </form>     
                     <div id="pilotos-card-container">
                     </div>
+                    <div id="pilotos-sentinel" class="sentinel"></div>
                 </div>
             </div>
         </div>
@@ -74,6 +75,7 @@ export function accordion(){
                     </form> 
                     <div id="circuitos-card-container">
                     </div>
+                    <div id="circuitos-sentinel" class="sentinel"></div>
                 </div>
             </div>
         </div>

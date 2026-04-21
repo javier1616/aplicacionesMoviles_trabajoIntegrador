@@ -8,14 +8,80 @@ Consideraciones de diseño:
 
 ----------------------------------------------------------------------------
 
-LISTA DE PENDIENTES: 
+LISTA DE PENDIENTES (Todo lo que falta para terminar la app): 
 
 
-- Home (quiza buscar dibujos de escuderías y ver cómo relacionar pilotos con escuderias)
-- Busqueda : hacer funcionar los filtros de busqueda, luego duplicar info a otras páginas
-- Detalles: acomodar la info
-- Historial: ordenar por date mas reciente, si ya esta no agregarlo, actualizar el orden
-- Favoritos: Agregar / Quitar de favoritos
-- Responsive
-- PWA
+ Home
+----------------------------------------
+- Colocar dibujitos de las escuderias -->
+  linkean a una vista extra con el auto y una card de los pilotos. Si clickeas en ellas vas a detalles
+ (quiza buscar dibujos de escuderías y ver cómo relacionar pilotos con escuderias)
+ (hay un fetch de season y/o de constructors)
 
+Busqueda
+-----------------------------------------------------------
+
+- Acomodar el filtro de la siguiente manera: 
+	- evaluas los filtros que se van a usar....
+	- Si solo filtras por temparada --> va con limit offset
+	- Si le sumas el nombre o alguna letra y/o nacionalidad --> 
+		en cada cambio que le sumes, pide again y va con limit offset
+
+	- Si filtras solo por nombre o por todas las temporadas -->
+		pide todos los registros (si ya los tiene los busca en memoria)
+		(deberia armar algo que no se, una vez x semana actualice igual o bien,
+		 al iniciar la app borre el local así actualiza cada vez que vuelvo a usar ?? )
+		Los almacena en algun lado si no los tiene
+		filtra desde ahí
+
+	Idem para circuitos
+
+	Si queres agregas uno para escuderias
+
+Además, tenés que agregar una variable o algo que tenga nacionalidades y paises, sobre todo para los casos de todos
+
+Duplicar todo para circuitos
+
+Detalles
+---------------------------------
+
+- Acomoda un poco la info, no mucho mas...
+
+Historial
+---------------------------------
+
+- Ordenar por date desde mas reciente a mas antiguo.
+	Cuando voy a detalles, me fijo si está. Si ya está le actualizo date, 
+	sino lo agrego
+
+Favoritos
+---------------------------------
+Agregar toda la información relevante disponible en la API para ese ítem.
+(lo que estaba en la tarjetita tb mepa)
+• Un botón para agregar el ítem a la lista de deseos. 
+Agregar / Quitar de favoritos - Crear formulario de almacenamiento
+IMPORTANTE
+Variante B — Formulario de preferencias 
+Al presionar el botón de agregar, se presenta un formulario que permite personalizar la entrada en la 
+lista. Campos mínimos: cantidad o prioridad (requerido, valor numérico mayor a cero), categoría o 
+etiqueta personalizada (requerido), nota personal (opcional, con límite de caracteres). Al confirmar 
+con validaciones exitosas, el ítem se guarda en localStorage con los datos adicionales y se muestra 
+una confirmación al usuario.
+
+En ambas variantes, la lista de deseos debe: 
+• Mostrar todos los ítems guardados con su información resumida. 
+• Permitir eliminar ítems individualmente. 
+• Persistir entre sesiones mediante localStorage.
+
+----------------------------
+Diseño Responsive
+• Móvil – portrait hasta 480px): 1 o 2 resultado por fila. 
+• Móvil – landscape (481px–767px): 2 o 3 resultados por fila. 
+• Tablet (768px–1023px): 2 o 3 resultados por fila. 
+• Desktop (más de 1024px): 3 o más resultados por fila. 
+----------------------------
+
+LUEGO DE REALIZADOS LOS PUNTOS DE LA LISTA HAY QUE VOLVER A REVISAR EL ENUNCIADO PARA VER SI FALTA ALGO
+
+
+ POR ULTIMO ---> Crear PWA (ultimo porque es extra...)

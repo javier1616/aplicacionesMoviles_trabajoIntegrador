@@ -32,6 +32,12 @@ body{
     margin: 0;
 }
 
+.sentinel{
+    height:2px;
+    width:2px;
+    z-index:10;
+}
+
 /* view es el contenedor de toda la vista */
 #view{
     grid-area:view;

@@ -1,11 +1,14 @@
 
-//import { getCircuitos,getPilotos } from "./busqueda.behavior.js";
 import { contactoBehavior } from "./contacto.behavior.js";
 import { detailBehavior } from "./detail.behavior.js";
 
-import { getPilotosPosta, getCircuitosPosta } from "../api/http.js";
+import { getPilotos, getCircuitos } from "../api/http.js";
+import { initDataStore, getPilotosStore, getCircuitosStore} from "../utils/store.js";
 import { driverCard } from "../components/driversCard.js";
 import { circuitCard } from "../components/circuitsCard.js";
+
+import { validarFormulario } from "../utils/validarFormulario.js";
+import { sentinels_state } from "../utils/states.js";
 
 export function loadBehavior(path) {
 
@@ -36,24 +39,44 @@ export function loadBehavior(path) {
                 });
             });
 
+
             //comportamiento de los formularios
             //detectan cambio -> cargan resultados -> recalculan espacio
-
             document.getElementById("pilotos-form").addEventListener("input", async (e) => {
+
+                // variables para controlar paginacion ---------------------
+                let offset = 0;
+                const limit = 10;
+                let loading = false;
+                let total = Infinity; // después lo pisamos con la API
+                // ---------------------------------------------------------
 
                 const form_pilotos = document.getElementById("pilotos-form");
                 const resultsContainer = document.getElementById("pilotos-card-container");
 
+                //limpia los resultados anteriores
                 resultsContainer.innerHTML = "";
 
                 const nombre = document.getElementById("pilotos-input-search").value;
                 const season = form_pilotos.querySelector('input[name="season"]:checked')?.value;
                 const nacionalidad = document.getElementById("select-nacionalidad").value;
 
-                console.log("Buscando piloto");
-                console.log("nombre: " + nombre + " season: " + season + " nacionalidad: " + nacionalidad);
+                validarFormulario(nombre,season,nacionalidad);
 
-                const result = await getPilotosPosta(nombre,season,nacionalidad);
+                let result;
+
+                if( season == "2025" || season == "2026" )
+                {
+                    result = await getPilotos(nombre,season,nacionalidad, limit, offset);
+                }
+                else
+                {
+                    console.log("trae todos porque no tiene forma de filtrar por API + carga progresiva")
+                    //ACA DEBO REVISAR Y ASEGURARME DE QUE ESTEN CARGADOS LOS DATOS
+                    // Nos aseguramos que terminó (si ya terminó, pasa instantáneo)
+                    await initDataStore(); 
+                    result = getPilotosStore();
+                }
 
                 console.log("Datos obtenidos");
                 console.log(result);
@@ -82,7 +105,7 @@ export function loadBehavior(path) {
                 console.log("Buscando circuito");
                 console.log("nombre: " + nombre + " season: " + season + " pais: " + pais);
 
-                const result = await getCircuitosPosta(nombre,season,pais);
+                const result = await getCircuitos(nombre,season,pais);
 
                 console.log("Datos obtenidos");
                 console.log(result);
@@ -96,6 +119,56 @@ export function loadBehavior(path) {
                 collapse.style.height = collapse.scrollHeight + "px";
 
             });
+
+            //reseteo estado de los sentinels
+
+            sentinels_state.circuitos = {
+                loading: false,
+                primeraVez: true,
+                offset: 0
+            };
+
+            sentinels_state.pilotos = {
+                loading: false,
+                primeraVez: true,
+                offset: 0
+            };
+
+            //comportamiento de los Sentinels
+            const circuitosSentinel = document.getElementById("circuitos-sentinel");
+            const pilotosSentinel = document.getElementById("pilotos-sentinel");
+
+            //Se crea un IntersectionObserver para manejar ambos Sentinels
+            //aquí va el comportamiento de los Sentinels
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    if (entry.target.id === "pilotos-sentinel") {
+                        if (sentinels_state.pilotos.primeraVez) {
+                            sentinels_state.pilotos.primeraVez = false;
+                            return;
+                        };
+
+                        console.log("Cargar más pilotos");
+
+                    }
+
+                    if (entry.target.id === "circuitos-sentinel") {
+                        if (sentinels_state.circuitos.primeraVez) {
+                            sentinels_state.circuitos.primeraVez = false;
+                            return;
+                        };
+                        console.log("Cargar más circuitos");
+                    }
+                });
+
+            });
+
+            observer.observe(circuitosSentinel);
+            observer.observe(pilotosSentinel);
+
         break;
 
         case "/detail":

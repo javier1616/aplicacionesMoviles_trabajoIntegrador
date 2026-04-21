@@ -1,9 +1,9 @@
-import { jolpica_url } from "../config.js";
+import { jolpica_url, jolpica_url_all } from "../config.js";
 import { drivers_response } from "../response_mocks/drivers_mock.js";
 import { circuits_response } from "../response_mocks/circuits_mock.js";
 
-//request generico (fetch)
 
+//request generico (fetch) ---------------------------------------------------
 export async function request(url, options = {}) {
   const res = await fetch(url, {
     headers: {
@@ -18,38 +18,10 @@ export async function request(url, options = {}) {
 
   return await res.json();
 }
+//----------------------------------------------------------------------------
 
-/*
-export async function getPilotos() {
-    //let pilotos = await request(jolpica_url_drivers);       // --> POSTA
-    let pilotos = drivers_response;       // --> MOCK
 
-    pilotos = pilotos.MRData.DriverTable.Drivers;
-    
-    const results = document.getElementById("pilotos-card-container");
-    
-    pilotos.forEach(element => {
-        results.innerHTML += driverCard(element);
-    });
-
-}
-
-export async function getCircuitos() {
-    //let circuitos = await request(jolpica_url_circuits);    // --> POSTA
-    let circuitos = circuits_response;   // --> MOCK
-
-    circuitos = circuitos.MRData.CircuitTable.Circuits;
-    
-    const results = document.getElementById("circuitos-card-container");
-    
-    circuitos.forEach(element => {
-        results.innerHTML += circuitCard(element);
-    });
-
-}
-*/
-
-export async function getPilotosPosta(name,season,nacionalidad){
+export async function getPilotos(name,season,nacionalidad,limit,offset){
 
     let url = jolpica_url;
 
@@ -57,13 +29,23 @@ export async function getPilotosPosta(name,season,nacionalidad){
       url +=  season + "/"
     }
 
-    //let pilotos = await request(url);       // --> POSTA
-    let pilotos = drivers_response;       // --> MOCK
+    url += `drivers`
+
+    let params = `?limit=${limit}&offset=${offset}`
+
+
+    let pilotos = await request(url+params);       // --> POSTA
+    //let pilotos = drivers_response;       // --> MOCK
+
+    console.log("get Pilotos - url: " + url)
+
+    
+    console.log("pilotos: " + pilotos);
     
     return pilotos.MRData.DriverTable.Drivers;
 }
 
-export async function getCircuitosPosta(name,season,pais){
+export async function getCircuitos(name,season,pais){
 
     let url = jolpica_url;
 
@@ -71,11 +53,20 @@ export async function getCircuitosPosta(name,season,pais){
       url +=  season + "/"
     }
 
-    //let pilotos = await request(url);       // --> POSTA
-    let circuitos = circuits_response;       // --> MOCK
+    url += `circuitos`
+
+    let params = `?limit=${limit}&offset=${offset}`
+
+    let circuitos = await request(url+params);       // --> POSTA
+    //let circuitos = circuits_response;       // --> MOCK
+
+    console.log("getCircuitos - url: " + url)
+
+    console.log("circuitos: " + circuitos)
     
     return circuitos.MRData.CircuitTable.Circuits;
 }
+
 
 export async function getImage(url){
 
@@ -92,6 +83,7 @@ export async function getImage(url){
     return imageUrl;
 }
 
+
 export async function getImageAndExtract(url){
 
     let wiki_result = await request(url);
@@ -105,4 +97,95 @@ export async function getImageAndExtract(url){
     }
     
     return result;
+}
+
+
+export async function getAllPilotos(){
+
+    let limit = 100;
+    let offset = 0;
+    let total;
+    let result = [];
+
+    let count = 2;
+
+    let url = jolpica_url_all;
+
+    url += `drivers`
+
+    console.log("solicitando pilotos...")
+
+    let params = `/?limit=${limit}&offset=${offset}`;
+
+    let pilotos = await request(url+params);
+  
+    offset += parseInt(pilotos.MRData.limit);
+    total = pilotos.MRData.total;
+
+    console.log("offset: "+ offset + " total: " + total);
+
+    result.push(...pilotos.MRData.DriverTable.Drivers);
+
+
+    while (offset < total){
+
+      params = `/?limit=${limit}&offset=${offset}`
+      pilotos = await request(url+params);
+      
+      offset += parseInt(pilotos.MRData.limit);
+      total = pilotos.MRData.total;
+
+      result.push(...pilotos.MRData.DriverTable.Drivers);
+
+    }
+
+    console.log("Total de pilotos encontrados: " + result.length);
+
+    return result;
+
+}
+
+export async function getAllCircuitos(){
+
+    let limit = 100;
+    let offset = 0;
+    let total;
+    let result = [];
+
+    let count = 2;
+
+    let url = jolpica_url_all;
+
+    url += `circuits`
+
+    console.log("solicitando circuitos...")
+
+    let params = `/?limit=${limit}&offset=${offset}`;
+
+    let circuitos = await request(url+params);
+  
+    offset += parseInt(circuitos.MRData.limit);
+    total = circuitos.MRData.total;
+
+    console.log("offset: "+ offset + " total: " + total);
+
+    result.push(...circuitos.MRData.CircuitTable.Circuits);
+
+
+    while (offset < total){
+
+      params = `/?limit=${limit}&offset=${offset}`
+      circuitos = await request(url+params);
+      
+      offset += parseInt(circuitos.MRData.limit);
+      total = circuitos.MRData.total;
+
+      result.push(...circuitos.MRData.CircuitTable.Circuits);
+
+    }
+
+    console.log("Total de circuitos encontrados: " + result.length);
+
+    return result;
+
 }

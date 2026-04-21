@@ -2,8 +2,10 @@
 // jolpica - https://github.com/jolpica/jolpica-f1/tree/main/docs
 
 export const jolpica_url = "https://api.jolpi.ca/ergast/f1/"
-export const jolpica_url_drivers = jolpica_url + "2026/drivers"
-export const jolpica_url_circuits = jolpica_url + "2026/circuits"
+//export const jolpica_url_drivers = jolpica_url + "2026/drivers"
+//export const jolpica_url_circuits = jolpica_url + "2026/circuits"
+
+export const jolpica_url_all = "https://api.jolpi.ca/ergast/f1/"
 
 // examples:
 // https://api.jolpi.ca/ergast/f1/2026/drivers
@@ -57,3 +59,7 @@ const results_escuderias_url = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
 
 //con esto averiguas ultima carrera para hacer la consulta anterior
 const ultima_carrera_url = "https://api.jolpi.ca/ergast/f1/current/last/results/"
+
+
+
+
