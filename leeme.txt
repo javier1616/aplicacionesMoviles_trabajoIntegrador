@@ -21,6 +21,9 @@ LISTA DE PENDIENTES (Todo lo que falta para terminar la app):
 Busqueda
 -----------------------------------------------------------
 
+QUIZA, PARA EL FUNCIONAMIENTO DE LOS SENTINELS, TE CONVIENE, CUANDO ABRIS EL ACCORDION
+LIMPIAS TODO, Y MIENTRAS VAS CAMBIANDO Y HACIENDO COSAS, TRABAJAS CON UNA URL, UN LIMIT Y UN OFFSET GLOBAL, Y UN TIPO DE ACCORDION O ALGO ASI... FIJACHI
+
 - Acomodar el filtro de la siguiente manera: 
 	- evaluas los filtros que se van a usar....
 	- Si solo filtras por temparada --> va con limit offset
@@ -47,12 +50,6 @@ Detalles
 
 - Acomoda un poco la info, no mucho mas...
 
-Historial
----------------------------------
-
-- Ordenar por date desde mas reciente a mas antiguo.
-	Cuando voy a detalles, me fijo si está. Si ya está le actualizo date, 
-	sino lo agrego
 
 Favoritos
 ---------------------------------

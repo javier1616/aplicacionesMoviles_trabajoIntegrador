@@ -26,7 +26,9 @@ function loadDetalle() {
                             <img src="./src/assets/icons/star-regular-full-yellow.svg">
                         </button>
                     </div>
-                    <img src="" alt="imagen" id="detail-img">
+                    <div id="detail-img-container">
+                        <img src="" alt="imagen" id="detail-img">
+                    </div>
                     <p id="detail-text"></p>
                 </div>
             </main>`;

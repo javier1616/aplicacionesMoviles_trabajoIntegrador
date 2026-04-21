@@ -31,16 +31,13 @@ export async function getPilotos(name,season,nacionalidad,limit,offset){
 
     url += `drivers`
 
-    let params = `?limit=${limit}&offset=${offset}`
+    let params = `/?limit=${limit}&offset=${offset}`
 
 
     let pilotos = await request(url+params);       // --> POSTA
     //let pilotos = drivers_response;       // --> MOCK
 
     console.log("get Pilotos - url: " + url)
-
-    
-    console.log("pilotos: " + pilotos);
     
     return pilotos.MRData.DriverTable.Drivers;
 }
@@ -55,14 +52,12 @@ export async function getCircuitos(name,season,pais){
 
     url += `circuitos`
 
-    let params = `?limit=${limit}&offset=${offset}`
+    let params = `/?limit=${limit}&offset=${offset}`
 
     let circuitos = await request(url+params);       // --> POSTA
     //let circuitos = circuits_response;       // --> MOCK
 
     console.log("getCircuitos - url: " + url)
-
-    console.log("circuitos: " + circuitos)
     
     return circuitos.MRData.CircuitTable.Circuits;
 }

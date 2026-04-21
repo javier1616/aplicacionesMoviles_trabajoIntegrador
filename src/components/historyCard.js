@@ -1,12 +1,23 @@
 
 export function historyCard(data) {
+
+    let fechaConFormato = new Date(data.date).toLocaleString('es-AR', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+
     return`
-    <div class="history-card">
+    <div class="history-card card" data-type="${data.type}" data-id="${data.id}" data-url="${data.url}" data-name="${data.name}">
         <img src=${data.img} class="card-img-icon" alt="imagen">
         <div class="card-body">
-            <h3 class="card-title">${data.name}</h3>
-            <p class="card-text">
-                Página visitada: ${data.date}
+            <p class="card-title">${data.name}</p>
+            <p class="card-description">
+                Visto:<br>
+                ${fechaConFormato}
             </p>
         </div>
     </div>`;

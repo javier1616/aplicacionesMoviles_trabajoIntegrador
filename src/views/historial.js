@@ -11,23 +11,30 @@ export function Historial() {
 
     let main = `<main>`;
 
-    main += `<p>Acordate de mostrarlos en orden reciente de date</p>`;
-
     //toma la info de localStorage
     const history_array = JSON.parse(localStorage.getItem("history_array"));
 
     //valida si existe y tiene datos
     if (history_array && history_array.length > 0)
     {
-        main += `<div id="historial_card_container">`;
-        history_array.forEach(element => {
+
+        let history_array_sortered = [...history_array].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+        );
+
+        main += `<div id="history-container">`;
+        main += `<div id="history-card-container">`;
+
+        history_array_sortered.forEach(element => {
             main += historyCard(element);
         });
+
+        main += `</div>`;
         main += `</div>`;
     }
     else
     {
-        main += "<p>No hay datos</p>";
+        main += `<div id="history-container"> <p id="history-no-data"> No hay datos </p> </div>`;
     }
     
     main += `</main>`;

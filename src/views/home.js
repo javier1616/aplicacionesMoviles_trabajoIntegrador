@@ -19,8 +19,7 @@ export function Home() {
 
 function loadHome() {
     return `<main>
-                <p>EL PROXIMO PASO ES QUE CUANDO ACCEDO AL DETALLE<br>
-                    LA CARD SE AGREGA AL HISTORIAL</p>
+                
                 <p>https://www.formula1.com/en/racing/2026</p>
                 <p>https://www.f1racinghub.com/drivers</p>
                 <p>https://www.f1racinghub.com/about</p>
@@ -31,9 +30,9 @@ function loadHome() {
                     <li>RF02 - Busqueda 3f      X </li>
                     <li>RF03 - Resultados       X </li>
                     <li>RF04 - Detalles         X </li>
-                    <li>RF05 - Favoritos        X </li>
-                    <li>RF06 - Historial        X </li>
-                    <li>RF07 - Contacto + form  X </li>
+                    <li>RF05 - Favoritos + form X </li>
+                    <li>RF06 - Historial        V </li>
+                    <li>RF07 - Contacto         V </li>
                     <li>RF08 - Responsive       X </li>
                     <li>RFXX - PWA              X </li>
                     
