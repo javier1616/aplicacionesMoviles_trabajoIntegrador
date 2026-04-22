@@ -299,9 +299,9 @@ async function cargarPilotos() {
     if (season == "2025" || season == "2026") {
         
         data = await getPilotos(
-            season,
+            season/*,
             state.limit,
-            state.offset
+            state.offset*/
         );
 
     } else {
@@ -323,6 +323,7 @@ async function cargarPilotos() {
 
     let pilotos_validos = data.filter(piloto => "code" in piloto)
 
+    //let filtrados = data.filter( piloto =>
     let filtrados = pilotos_validos.filter(piloto =>
         piloto.givenName.toLowerCase().includes(nombre.toLowerCase()) ||
         piloto.familyName.toLowerCase().includes(nombre.toLowerCase())

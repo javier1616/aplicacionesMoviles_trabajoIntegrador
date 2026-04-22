@@ -31,9 +31,9 @@ export async function getPilotos(season,limit,offset){
 
     url += `drivers`
 
-    let params = `/?limit=${limit}&offset=${offset}`
+    //let params = `/?limit=${limit}&offset=${offset}`
 
-    let pilotos = await request(url+params);       // --> POSTA
+    let pilotos = await request(url/*+params*/);       // --> POSTA
     //let pilotos = drivers_response;       // --> MOCK
 
     console.log("get Pilotos - url: " + url)
