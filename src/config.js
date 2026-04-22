@@ -52,7 +52,7 @@ export const wiki_API_v2 = "https://en.wikipedia.org/api/rest_v1/page/summary/"
 */
 
 //con esto obtengo la lista de escuderias
-const constructors = "https://api.jolpi.ca/ergast/f1/constructors"
+//const constructors = "https://api.jolpi.ca/ergast/f1/constructors"
 
 //con esto podes relacionar qué escuderia corresponde a qué piloto
 const results_escuderias_url = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
@@ -61,5 +61,19 @@ const results_escuderias_url = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
 const ultima_carrera_url = "https://api.jolpi.ca/ergast/f1/current/last/results/"
 
 
+//fijate que la base es la misma para todos los endpoints
 
+/* Resultados (por temporada) */
+
+const results_season = "https://api.jolpi.ca/ergast/f1/2026/results/"
+// example: "https://api.jolpi.ca/ergast/f1/2026/results/"
+
+/* Resultados (por carrera) */
+
+const results_race = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
+//example: "https://api.jolpi.ca/ergast/f1/2026/3/results/"
+
+
+/* Teams (se pide por temporada pero solo usamos la ultima)*/
+export const jolpica_constructors = "https://api.jolpi.ca/ergast/f1/2026/constructors"
 

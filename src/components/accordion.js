@@ -9,6 +9,7 @@ export function accordion(){
                 <div class="accordion-item-body">
                     <form id="pilotos-form" class="search-form">
                         <input type="search" class="input-search" id="pilotos-input-search" placeholder="Buscar...">
+                        <small id="error-nombre" class="error"></small>
                         <div class="radio-container">
                             <span class="radio-description">Temporadas</span>
                             <input type="radio" id="pilotos-s-2026" name="season" value="2026">
@@ -18,6 +19,7 @@ export function accordion(){
                             <input type="radio" id="pilotos-s-0" name="season" value="0">
                             <label for="pilotos-s-0">Todas</label>
                         </div>
+                        <small id="error-season" class="error"></small>
                         <div class = "select-container">
                             <label for="select-nacionalidad" class="select-description">Nacionalidad</label>
                             <select id="select-nacionalidad" class="select-box">

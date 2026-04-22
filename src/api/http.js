@@ -1,4 +1,4 @@
-import { jolpica_url, jolpica_url_all } from "../config.js";
+import { jolpica_url, jolpica_url_all, jolpica_constructors } from "../config.js";
 import { drivers_response } from "../response_mocks/drivers_mock.js";
 import { circuits_response } from "../response_mocks/circuits_mock.js";
 
@@ -21,7 +21,7 @@ export async function request(url, options = {}) {
 //----------------------------------------------------------------------------
 
 
-export async function getPilotos(name,season,nacionalidad,limit,offset){
+export async function getPilotos(season,limit,offset){
 
     let url = jolpica_url;
 
@@ -32,7 +32,6 @@ export async function getPilotos(name,season,nacionalidad,limit,offset){
     url += `drivers`
 
     let params = `/?limit=${limit}&offset=${offset}`
-
 
     let pilotos = await request(url+params);       // --> POSTA
     //let pilotos = drivers_response;       // --> MOCK
@@ -183,4 +182,16 @@ export async function getAllCircuitos(){
 
     return result;
 
+}
+
+export async function getTeam(id){
+
+    let url = jolpica_constructors;
+
+    let results = await request(url);
+    
+    let result = results.MRData.ConstructorTable.Constructors.find(c => 
+                    c.constructorId === id);   
+    
+    return result;
 }

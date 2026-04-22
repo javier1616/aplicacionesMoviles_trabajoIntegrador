@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             let history_item;
 
 
-
             //console.log("nombre que va a guardar en history_array: " + card.dataset.name);
             //card.dataset.name = "blabla bla";
 
