@@ -270,6 +270,7 @@ export function loadBehavior(path) {
         case "/team":
             teamBehavior();
         break;
+
     }
 }
 

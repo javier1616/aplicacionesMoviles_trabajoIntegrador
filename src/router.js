@@ -4,7 +4,7 @@ import { Busqueda } from "./views/busqueda.js";
 import { Contacto } from "./views/contacto.js";
 import { Detalle } from "./views/detalle.js";
 import { Historial } from "./views/historial.js";
-import { WishList } from "./views/wishList.js";
+import { Favorite } from "./views/favorite.js";
 import { Team } from "./views/team.js";
 
 import { loadBehavior } from "./behavior/loadBehavior.js";
@@ -15,7 +15,7 @@ const routes = {
   "/contact": Contacto,
   "/detail": Detalle,
   "/history": Historial,
-  "/wishList": WishList,
+  "/favorite": Favorite,
   "/team": Team
 };
 

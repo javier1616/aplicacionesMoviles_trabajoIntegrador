@@ -373,6 +373,42 @@ input[type="radio"]:checked + label {
 }
 
 /* ----------------------------------------------------------- */
+/*                      Vista de Favoritos                     */
+/* ----------------------------------------------------------- */
+
+#favorite-container{
+    display:grid;
+    place-items:center;
+    background:var(--background-color);
+    margin-top:0.25em;
+}
+
+#favorite-card-container{
+    display:grid;
+    place-items:center;
+    /*background: var(--background-color);*/
+    /*margin-top:0.25em;*/
+    /*color: var(--text-color);
+    padding-top:10vh;
+    padding-bottom:10vh;*/
+}
+
+#favorite-no-data{
+    color: var(--text-color);
+    font-size:20px;
+    font-weight:600;
+}
+
+.favorite-remove-icon{
+    width:3em;
+    height:3em;
+}
+
+.favorite-card .card-footer button{
+    border:none;
+}
+
+/* ----------------------------------------------------------- */
 /*                    Vista de Contacto                        */
 /* ----------------------------------------------------------- */
 
@@ -476,28 +512,6 @@ li{
     
 }
 
-/* ----------------------------------------------------------- */
-/*                      Vista de Favoritos                     */
-/* ----------------------------------------------------------- */
-
-#favorite-card-container{
-    display:grid;
-    place-items:center;
-    background: var(--background-color);
-    margin-top:0.25em;
-    color: var(--text-color);
-    padding-top:10vh;
-    padding-bottom:10vh;
-}
-
-.favorite-remove-icon{
-    width:3em;
-    height:3em;
-}
-
-.favorite-card .card-footer button{
-    border:none;
-}
 
 /* ----------------------------------------------------------- */
 /*                      Vista de Escuderias                    */

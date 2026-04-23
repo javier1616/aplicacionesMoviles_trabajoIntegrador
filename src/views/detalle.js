@@ -23,7 +23,7 @@ function loadDetalle() {
                     <div id="detail-header">
                         <h3 id="detail-title"></h3>
                         <button id="favorite-btn">
-                            <img src="./src/assets/icons/star-regular-full-yellow.svg">
+                            <img src="./src/assets/icons/star-empty-yellow.svg">
                         </button>
                     </div>
                     <div id="detail-img-container">

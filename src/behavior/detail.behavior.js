@@ -4,6 +4,8 @@ import { getImage, getImageAndExtract } from "../api/http.js"
 
 export async function detailBehavior() {
 
+    let favorite_item;
+
     //toma la info de localStorage
     const detail_data_view = JSON.parse(localStorage.getItem("detail_view"));
 
@@ -14,6 +16,88 @@ export async function detailBehavior() {
     //    url:
     //    name: 
     // };
+
+
+    console.log("Datos guardados desde la card que pasan a detai_data_view");
+    console.log(detail_data_view);
+
+
+    //toma la info de localStorage. Si no existe cargo con []
+    const favorite_array = JSON.parse(localStorage.getItem("favorite_array")) || [];
+
+    
+    const favorite_btn = document.getElementById("favorite-btn");
+
+    const img = favorite_btn.querySelector('img');
+
+    // por default hay una estrella vacía, pero si está en favoritos
+    // se cambia por una estrella llena
+    if (favorite_array.some(elem => elem.id == detail_data_view.id)) {
+        img.src = "./src/assets/icons/star-full-yellow.svg";
+    }
+
+    //comportamiento del boton agregar a favoritos cuando clickeo
+    favorite_btn.addEventListener("click", () =>{
+
+        console.log("clic en estrella");
+
+        //apenas presiono busco si está 
+        const index = favorite_array.findIndex(elem => elem.id == detail_data_view.id);
+
+        if( index !== -1)
+        {
+
+            //si ya estaba lo quito de la lista y despinto la estrella
+            favorite_array.splice(index, 1); //borra un elemento a partir de ese indice
+            //reemplazo todo el array con la modificacion
+            localStorage.setItem("favorite_array", JSON.stringify(favorite_array));
+            img.src = "./src/assets/icons/star-empty-yellow.svg";
+
+        } else {
+
+            //si no está lo agrego y pinto la estrella  
+            //Guarda en favoritos los datos necesarios para mostrar la card...
+
+            switch(detail_data_view.type){
+                case("driver"):
+                    favorite_item = {
+                        type : detail_data_view.type,
+                        id : detail_data_view.id,
+                        url : detail_data_view.url,
+                        name : detail_data_view.name,
+                        img : "./src/assets/icons/casco2.png"
+                       // code :       <li> Code: ${data.code} </li>,
+                       // number :     <li> Number: ${data.permanentNumber}</li>,
+                       // nacionality :   <li> Nacionality: ${data.nationality} </li>,
+                       // date : new Date()
+                    };
+                break;
+
+                case("circuit"):
+                    favorite_item = {
+                        type : detail_data_view.type,
+                        id : detail_data_view.id,
+                        url : detail_data_view.url,
+                        name : detail_data_view.name,
+                        img : "./src/assets/icons/circuito.png"
+                        // country :   <li> Country: ${data.nationality} </li>,
+                        //date : new Date()
+                };
+                break;
+
+            };
+
+            favorite_array.push(favorite_item);
+
+            //reemplazo todo el array con la modificacion
+            localStorage.setItem("favorite_array", JSON.stringify(favorite_array));
+
+            //pinto la estrella
+            img.src = "./src/assets/icons/star-full-yellow.svg";
+
+        }
+
+    })
 
     if(detail_data_view.type)       //primero valido si existe
     {

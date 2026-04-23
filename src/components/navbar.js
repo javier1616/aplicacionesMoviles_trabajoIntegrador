@@ -13,9 +13,9 @@ export function Navbar() {
         <img class="icono" src="./src/assets/icons/boxes.png" />
         <span class="navbar-icon-description">Detalle</span>
       </button>
-      <button class="navbar-button" onclick="window.navigate('/wishList')">
+      <button class="navbar-button" onclick="window.navigate('/favorite')">
         <img class="icono" src="./src/assets/icons/medalla.png" />
-        <span class="navbar-icon-description">WishList</span>
+        <span class="navbar-icon-description">Favoritos</span>
       </button>
       <button class="navbar-button" onclick="window.navigate('/history')">
         <img class="icono" src="./src/assets/icons/crono1.png" />
