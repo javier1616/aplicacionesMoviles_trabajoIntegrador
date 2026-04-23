@@ -4,7 +4,7 @@ import { detailBehavior } from "./detail.behavior.js";
 import { teamBehavior } from "./team.behavior.js";
 
 import { getPilotos, getCircuitos, getTeam } from "../api/http.js";
-import { initDataStore, getPilotosStore, getCircuitosStore} from "../utils/store.js";
+import { initDataStore, getPilotosStore, getCircuitosStore, getNacionalidadesStore, getPaisesStore} from "../utils/store.js";
 import { driverCard } from "../components/driversCard.js";
 import { circuitCard } from "../components/circuitsCard.js";
 
@@ -33,6 +33,34 @@ export function loadBehavior(path) {
         break;
 
         case "/search":
+
+            //se cargan los select cuando se renderiza la vista
+            const select_nacionalidad = document.getElementById("select-nacionalidad");
+            const select_pais = document.getElementById("select-pais");
+
+            //necesito ejecutarla de este modo porque debo ejecutarla async
+            initDataStore().then(() => {
+
+                //no necesito lo que trae initDataStore, solo necesito
+                //que haya cargado los datos
+
+                console.log("verificacion de datos");
+                console.log(getNacionalidadesStore());
+                console.log(getPaisesStore());
+
+                const nacionalidades = getNacionalidadesStore();
+                const paises = getPaisesStore();
+
+                nacionalidades.forEach(n => {
+                    select_nacionalidad.innerHTML += `<option value="${n}">${n}</option>`;
+                });
+
+                paises.forEach(n => {
+                    select_pais.innerHTML += `<option value="${n}">${n}</option>`;
+                });
+
+            });
+            
 
             //comportamiento del accordion
             document.querySelectorAll(".accordion-item-header").forEach(button => {
@@ -67,6 +95,7 @@ export function loadBehavior(path) {
             document.getElementById("circuitos-form")
                     .addEventListener("input", debounce(handleCircuitosInput, 300));
 
+            
 
             //reseteo estado de los sentinels
             sentinels_state.circuitos.offset = 0;
@@ -111,11 +140,11 @@ export function loadBehavior(path) {
                         {
                             //esta busqueda evita un bug --> abris accordion metes datos erroneos, lo cerras y lo abris
 
-                            const error_nombre = document.getElementById("error-nombre");
-                            const error_season = document.getElementById("error-season");
+                            const error_nombre = document.getElementById("pilotos-error-nombre");
+                            const error_season = document.getElementById("pilotos-error-season");
 
                             //guarda el estado del filtro
-                            const errores = validarFormulario(nombre,season,nacionalidad);
+                            const errores = validarFormulario(nombre,season,nacionalidad,getNacionalidadesStore());
                             console.log("errores: ", JSON.stringify(errores));
 
                             if(Object.keys(errores).length > 0)
@@ -141,7 +170,6 @@ export function loadBehavior(path) {
                             console.log("para que no tire error tenes que validar errores del formulario para que no cargue pilotos con datos erroneos")
                             
                             
-                            
                             cargarPilotos();  //carga mas pilotos cuando llega al sentinel
                         }
                         else
@@ -161,11 +189,65 @@ export function loadBehavior(path) {
                         console.log("primeraVez ?: " + sentinels_state.circuitos.primeraVez)
                         if (sentinels_state.circuitos.primeraVez) {
                             sentinels_state.circuitos.primeraVez = false;
+                            console.log("cambia a false");
                             return;
                         };
 
+                        const form_circuitos = document.getElementById("circuitos-form");
+                        const nombre = document.getElementById("circuitos-input-search").value;
+                        const season = form_circuitos.querySelector('input[name="season"]:checked')?.value;
+                        const pais = document.getElementById("select-pais").value;
+    
+
                         console.log("Cargar más circuitos");
-                        cargarCircuitos(); //carga mas circuitos cuando llega al sentinel
+
+                        console.log("nombre: " + nombre + " season: " + season + " pais: " + pais );
+                        if(!formularioVacio(nombre,season,pais))
+                        {
+                            //esta busqueda evita un bug --> abris accordion metes datos erroneos, lo cerras y lo abris
+
+                            const error_nombre = document.getElementById("pilotos-error-nombre");
+                            const error_season = document.getElementById("pilotos-error-season");
+
+                            //guarda el estado del filtro
+                            const errores = validarFormulario(nombre,season,pais,getPaisesStore());
+                            console.log("errores: ", JSON.stringify(errores));
+
+                            if(Object.keys(errores).length > 0)
+                            {
+                                const errorNombre = errores.find(e => e.error === "nombre");
+                                const errorSeason = errores.find(e => e.error === "season");
+                            
+                                if (errorNombre){
+                                    error_nombre.textContent = errorNombre.message;
+                                    error_nombre.style.display = "block";
+                                }
+
+                                if (errorSeason) {
+                                    error_season.textContent = errorSeason.message;
+                                    error_season.style.display = "block";
+                                }
+
+                                return;     //si hay errores corta la ejecución
+                            } else {
+                                console.log("no hay errores, buscando y filtrando...");
+                            };
+
+                            console.log("para que no tire error tenes que validar errores del formulario para que no cargue pilotos con datos erroneos")
+
+
+                            cargarCircuitos(); //carga mas circuitos cuando llega al sentinel
+                        }
+                        else
+                        {
+                            console.log("... ops, formulario vacio")
+                        }
+
+                        //recalcula espacio
+                        const collapse = document.getElementById("accordion-circuitos");
+                        collapse.style.height = collapse.scrollHeight + "px";
+                        console.log("recalcula espacio");
+
                     }
                 });
 
@@ -220,8 +302,8 @@ async function handlePilotosInput() {
 
     console.log("cuando hago un input deberia pasar por aca");
     //reseteo mensajes de error
-    const error_season = document.getElementById("error-season");
-    const error_nombre = document.getElementById("error-nombre");
+    const error_season = document.getElementById("pilotos-error-season");
+    const error_nombre = document.getElementById("pilotos-error-nombre");
     error_season.style.display = "none";
     error_nombre.style.display = "none";
 
@@ -232,7 +314,7 @@ async function handlePilotosInput() {
     
 
     //guarda el estado del filtro
-    const errores = validarFormulario(nombre,season,nacionalidad);
+    const errores = validarFormulario(nombre,season,nacionalidad,getNacionalidadesStore());
 
     console.log("errores: ", JSON.stringify(errores));
     
@@ -277,7 +359,70 @@ async function handlePilotosInput() {
 
 async function handleCircuitosInput() {
 
+    const resultsContainer = document.getElementById("circuitos-card-container");
+    const form_circuitos = document.getElementById("circuitos-form");
+    
+    //limpia los resultados anteriores
+    resultsContainer.innerHTML = "";
 
+    //resetea espacio
+    const collapse = document.getElementById("accordion-circuitos");
+    collapse.style.height = "auto";
+
+    console.log("cuando hago un input deberia pasar por aca");
+    //reseteo mensajes de error
+    const error_season = document.getElementById("circuitos-error-season");
+    const error_nombre = document.getElementById("circuitos-error-nombre");
+    error_season.style.display = "none";
+    error_nombre.style.display = "none";
+
+    
+    const nombre = document.getElementById("circuitos-input-search").value;
+    const season = form_circuitos.querySelector('input[name="season"]:checked')?.value;
+    const pais = document.getElementById("select-pais").value;
+    
+
+    //guarda el estado del filtro
+    const errores = validarFormulario(nombre,season,pais,getPaisesStore());
+
+    console.log("errores: ", JSON.stringify(errores));
+    
+    
+
+    if(Object.keys(errores).length > 0)
+    {
+        const errorNombre = errores.find(e => e.error === "nombre");
+        const errorSeason = errores.find(e => e.error === "season");
+
+        if (errorNombre){
+            error_nombre.textContent = errorNombre.message;
+            error_nombre.style.display = "block";
+        }
+
+        if (errorSeason) {
+            error_season.textContent = errorSeason.message;
+            error_season.style.display = "block";
+        }
+
+        return;     //si hay errores corta la ejecución
+    } else {
+        console.log("no hay errores, buscando y filtrando...");
+    };
+
+
+    circuitos_filters_state.nombre = nombre
+    circuitos_filters_state.season = season;
+    circuitos_filters_state.pais = pais;
+    
+    //reseteo estados de los sentinels
+    sentinels_state.circuitos.offset = 0;
+    sentinels_state.circuitos.total = Infinity;
+    sentinels_state.circuitos.loading = false;
+    
+    await cargarCircuitos();
+
+    //recalcula espacio
+    collapse.style.height = collapse.scrollHeight + "px";
 
 }
 
@@ -317,21 +462,29 @@ async function cargarPilotos() {
         
     }
 
+    
+    console.log("total registros: " + data.length)
+
     //algunos pilotos vienen incompletos. Tengo que validarlos
     //ejemplo: {"driverId": "arthur_leclerc","givenName": "Arthur","familyName": "Leclerc"}
     //filtro y uso los que tienen codigo de piloto
 
-    let pilotos_validos = data.filter(piloto => "code" in piloto)
+    let pilotos_validos = data.filter(piloto => "dateOfBirth" in piloto)
+    console.log("pilotos validos: " + pilotos_validos.length)
 
     //let filtrados = data.filter( piloto =>
     let filtrados = pilotos_validos.filter(piloto =>
-        piloto.givenName.toLowerCase().includes(nombre.toLowerCase()) ||
-        piloto.familyName.toLowerCase().includes(nombre.toLowerCase())
+        (   piloto.givenName.toLowerCase().includes(nombre.toLowerCase())  ||
+            piloto.familyName.toLowerCase().includes(nombre.toLowerCase())     ) &&
+            piloto.nationality.toLowerCase().includes(nacionalidad.toLowerCase()) 
     );
+
+    console.log("pilotos filtrados: " + filtrados.length)
 
     state.total = filtrados.length;
 
     console.log("coincidencias: " + filtrados.length)
+    console.log(filtrados);
 
 
     //result tiene la cantidad de filtrados que voy a mostrar
@@ -367,120 +520,90 @@ async function cargarPilotos() {
 
 
 async function cargarCircuitos() {
-    console.log("cargarCircuitos todavia no esta implementada");
-}
-
-
-
-
-/*
-            document.getElementById("circuitos-form").addEventListener("input", async (e) => {
-
-                const form_circuitos = document.getElementById("circuitos-form");
-                const resultsContainer = document.getElementById("circuitos-card-container");
-
-                resultsContainer.innerHTML = "";
-
-                const nombre = document.getElementById("circuitos-input-search").value;
-                const season = form_circuitos.querySelector('input[name="season"]:checked')?.value;
-                const pais = document.getElementById("select-pais").value;
-
-                console.log("Buscando circuito");
-                console.log("nombre: " + nombre + " season: " + season + " pais: " + pais);
-
-                const result = await getCircuitos(nombre,season,pais);
-
-                console.log("Datos obtenidos");
-                console.log(result);
-
-                result.forEach( elem => {
-                    resultsContainer.innerHTML += circuitCard(elem);
-                });
-
-                //recalcula espacio
-                const collapse = document.getElementById("accordion-pilotos");
-                collapse.style.height = collapse.scrollHeight + "px";
-
-            });*/
-
-
-
-/*
-async function cargarPilotos(){
 
     let result;
+    let data;
+    const state = sentinels_state.circuitos;
 
-    if (pilotosState.loading) return;
-    if (pilotosState.offset >= pilotosState.total) return;
+    if (state.loading) return;
+    if (state.offset >= state.total) return;
 
+    state.loading = true;
 
-    /*
-                if( season == "2025" || season == "2026" )
-                {
-                    result = await getPilotos(nombre,season,nacionalidad, limit, offset);
-                }
-                else
-                {
-                    console.log("trae todos porque no tiene forma de filtrar por API + carga progresiva")
-                    //ACA DEBO REVISAR Y ASEGURARME DE QUE ESTEN CARGADOS LOS DATOS
-                    // Nos aseguramos que terminó (si ya terminó, pasa instantáneo)
-                    await initDataStore(); 
-                    result = getPilotosStore();
-                }
+    const { nombre, season, pais } = circuitos_filters_state;
 
-                console.log("Datos obtenidos");
-                console.log(result);
-
-                result.forEach( elem => {
-                    resultsContainer.innerHTML += driverCard(elem);
-                });*
-
-    
-
-    pilotosState.loading = true;
-
-    const { nombre, season, nacionalidad } = pilotosState.filtros;
-
-    
+    console.log("Buscando por nombre: " + nombre + " season: " + season + " pais: "+ pais);
 
     if (season == "2025" || season == "2026") {
-
-        result = await getPilotos(
-            nombre,
-            season,
-            nacionalidad,
-            pilotosState.limit,
-            pilotosState.offset
+        
+        data = await getCircuitos(
+            season/*,
+            state.limit,
+            state.offset*/
         );
-
-        // ⚠️ depende de tu API
-        pilotosState.total = result.total ?? Infinity;
-        result = result.data ?? result;
 
     } else {
 
+        console.log("buscando en store de circuitos");
+
         await initDataStore();
 
-        let data = getPilotosStore();
+        data = getCircuitosStore();
 
-        pilotosState.total = data.length;
+        console.log(data);
 
-        result = data.slice(
-            pilotosState.offset,
-            pilotosState.offset + pilotosState.limit
-        );
     }
 
-    const container = document.getElementById("pilotos-card-container");
+    console.log("circuitos encontrados: " + data.length)
 
+    //algunos pilotos vienen incompletos. Tengo que validarlos
+    //PARA CIRCUITOS NI IDEA...
+    //ejemplo: {"driverId": "arthur_leclerc","givenName": "Arthur","familyName": "Leclerc"}
+    //filtro y uso los que tienen codigo de piloto
+    //let pilotos_validos = data.filter(piloto => "code" in piloto)
+
+
+    //let filtrados = circuitos_validos.filter(piloto =>
+
+    let filtrados = data.filter( circuito =>
+        circuito.circuitName.toLowerCase().includes(nombre.toLowerCase()) &&
+        circuito.Location.country.toLowerCase().includes(pais.toLowerCase())
+    );
+
+    console.log("circuitos filtrados: " + filtrados.length)
+
+    state.total = filtrados.length;
+
+    console.log("coincidencias: " + filtrados.length)
+    console.log(filtrados);
+
+
+    //result tiene la cantidad de filtrados que voy a mostrar
+    result = filtrados.slice(
+        state.offset,
+        state.offset + state.limit
+    );
+
+
+    const container = document.getElementById("circuitos-card-container");
+
+    //cargo el result a la vista
     result.forEach(elem => {
-        container.innerHTML += driverCard(elem);
+        container.innerHTML += circuitCard(elem);
     });
 
-    // 👉 avanzar paginación
-    pilotosState.offset += pilotosState.limit;
 
-    pilotosState.loading = false;
+    //recalcula espacio - si lo quitas de aca falla el render en la carga progresiva
+    const collapse = document.getElementById("accordion-circuitos");
+    collapse.style.height = collapse.scrollHeight + "px";
+    console.log("recalcula espacio");
 
+
+    state.offset += state.limit;
+
+    if (result.length < state.limit) {
+        state.total = state.offset;
+    }
+
+    state.loading = false;
 }
-*/

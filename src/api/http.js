@@ -41,7 +41,8 @@ export async function getPilotos(season,limit,offset){
     return pilotos.MRData.DriverTable.Drivers;
 }
 
-export async function getCircuitos(name,season,pais){
+//export async function getCircuitos(name,season,pais){
+export async function getCircuitos(season,limit,offset){
 
     let url = jolpica_url;
 
@@ -49,11 +50,11 @@ export async function getCircuitos(name,season,pais){
       url +=  season + "/"
     }
 
-    url += `circuitos`
+    url += `circuits`
 
-    let params = `/?limit=${limit}&offset=${offset}`
+    //let params = `/?limit=${limit}&offset=${offset}`
 
-    let circuitos = await request(url+params);       // --> POSTA
+    let circuitos = await request(url/*+params*/);       // --> POSTA
     //let circuitos = circuits_response;       // --> MOCK
 
     console.log("getCircuitos - url: " + url)

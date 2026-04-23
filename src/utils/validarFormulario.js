@@ -1,30 +1,31 @@
+import { getNacionalidadesStore } from "./store.js";
 
 
-export function validarFormulario(nombre,season,nacionalidad){
+export function validarFormulario(nombre,season,nac_o_pais,lista){
 
     console.log("Validar formulario: ");
-    console.log("nombre: " + nombre + " season: " + season + " nacionalidad: " + nacionalidad);
+    console.log("nombre: " + nombre + " season: " + season + " nacionalidad/pais: " + nac_o_pais);
 
     const result = []
     let response;
 
-    response = validar(nombre,"nombre");
+    response = validar(nombre,"nombre",[]);
 
     if (Object.keys(response).length > 0) {
         result.push(response);
     }
 
-    response = validar(season,"season");
+    response = validar(season,"season",[]);
 
     if (Object.keys(response).length > 0) {
         result.push(response);
     }
 
-    /*  response = validar(nacionalidad,"nacionalidad");
+    response = validar(nac_o_pais,"nacionalidad",lista);
 
     if (Object.keys(response).length > 0) {
         result.push(response);
-    }*/
+    }
 
     return result;
 
@@ -39,7 +40,7 @@ const validadores = {
     
 };
 
-export function validar(cadena, tipo) {
+export function validar(cadena, tipo, lista) {
 
     const response = {}
 
@@ -57,12 +58,14 @@ export function validar(cadena, tipo) {
                 response.error = tipo;
                 response.message = "Debe seleccionar una temporada";
             };
-        /*case "nacionalidad":
-            if(!nacionalidad_array.includes(cadena))
+            break;
+        case "nacionalidad":
+            if(!lista.includes(cadena) && !validadores.cadenaVacia(cadena))
             {
                 response.error = tipo;
-                response.message = "Error en campo nacionalidad";
-            }; */       
+                response.message = "Error en campo nacionalidad.";
+            };  
+            break;     
     }
 
     return response;

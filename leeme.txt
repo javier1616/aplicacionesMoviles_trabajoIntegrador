@@ -23,7 +23,7 @@ LISTA DE PENDIENTES (Todo lo que falta para terminar la app):
                     Así la estrella queda marcada aunque recargues.<p>
                 <ul>
                     <li>RF01 - Home             X </li>
-                    <li>RF02 - Busqueda 3f      X </li>
+                    <li>RF02 - Busqueda 3f      V </li>
                     <li>RF03 - Resultados       X </li>
                     <li>RF04 - Detalles         X </li>
                     <li>RF05 - Favoritos + form X </li>
@@ -72,7 +72,8 @@ Duplicar todo para circuitos
 Detalles
 ---------------------------------
 
-- Acomoda un poco la info, no mucho mas...
+- Acomoda un poco la info, no mucho mas...  y metele mas info, mucha mas info, a los 
+pilotos, circuitos y escuderias...
 
 
 Favoritos

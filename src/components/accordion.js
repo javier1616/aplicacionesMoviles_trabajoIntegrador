@@ -9,7 +9,7 @@ export function accordion(){
                 <div class="accordion-item-body">
                     <form id="pilotos-form" class="search-form">
                         <input type="search" class="input-search" id="pilotos-input-search" placeholder="Buscar...">
-                        <small id="error-nombre" class="error"></small>
+                        <small id="pilotos-error-nombre" class="error"></small>
                         <div class="radio-container">
                             <span class="radio-description">Temporadas</span>
                             <input type="radio" id="pilotos-s-2026" name="season" value="2026">
@@ -19,15 +19,11 @@ export function accordion(){
                             <input type="radio" id="pilotos-s-0" name="season" value="0">
                             <label for="pilotos-s-0">Todas</label>
                         </div>
-                        <small id="error-season" class="error"></small>
+                        <small id="pilotos-error-season" class="error"></small>
                         <div class = "select-container">
                             <label for="select-nacionalidad" class="select-description">Nacionalidad</label>
                             <select id="select-nacionalidad" class="select-box">
                                 <option value="">Seleccionar...</option>
-                                <option value="AR">Argentina</option>
-                                <option value="BR">Brasil</option>
-                                <option value="MX">México</option>
-                                <option value="ES">España</option>
                             </select>
                         </div>
                     </form>     
@@ -46,32 +42,21 @@ export function accordion(){
                 <div class="accordion-item-body">
                     <form id="circuitos-form" class="search-form">
                     <input type="search" class="input-search" id="circuitos-input-search" placeholder="Buscar...">
-                    <p>Chequear comportamiento de este accordion, cuando seleccionas una temporada se activa el otro accordion tb. Deberia desaparecer cuando trasalades los cambios del otro form aca...</p>
-                        <div>
-                            <span>Temporadas</span>
-                            <label>
-                                <input type="radio" name="season" value="2026">
-                                2026
-                            </label>
-                            <label>
-                                <input type="radio" name="season" value="2025">
-                                2025
-                            </label>
-                            <label>
-                                <input type="radio" name="season" value="0">
-                                Todas
-                            </label>
+                    <small id="circuitos-error-nombre" class="error"></small>
+                        <div class="radio-container">
+                            <span class="radio-description">Temporadas</span>
+                            <input type="radio" id="circuitos-s-2026" name="season" value="2026">
+                            <label for="circuitos-s-2026">2026</label>
+                            <input type="radio" id="circuitos-s-2025" name="season" value="2025">
+                            <label for="circuitos-s-2025">2025</label>
+                            <input type="radio" id="circuitos-s-0" name="season" value="0">
+                            <label for="circuitos-s-0">Todas</label>
                         </div>
-                        <div>
-                            <label for="select-pais">Pais:</label>
-                                <select id="select-pais" placeholder="Seleccionar pais...">
+                        <small id="circuitos-error-season" class="error"></small>
+                        <div class="select-container">
+                            <label for="select-pais" class="select-description">Pais</label>
+                            <select id="select-pais" class="select-box">
                                 <option value="">Seleccionar...</option>
-                                <option value="AR">Argentina</option>
-                                <option value="BR">Brasil</option>
-                                <option value="MX">México</option>
-                                <option value="ES">España</option>
-                                <option value="US">USA</option>
-                                <option value="IT">Italia</option>                                
                             </select>
                         </div>
                     </form> 
