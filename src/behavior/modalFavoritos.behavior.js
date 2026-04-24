@@ -30,10 +30,6 @@ export function openModal(detail_data_view,favorite_array) {
 
     console.log("modal abierto");
 
-    const input = document.querySelector("#modal-input");
-    input.focus();  //se activa ese campo en el modal
-
-
     //Comportamiento para agregar a favoritos
     const agregar_favoritos_btn = document.getElementById("modal-add-favorite-btn");
 

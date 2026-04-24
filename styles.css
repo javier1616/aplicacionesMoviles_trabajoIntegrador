@@ -637,19 +637,89 @@ li{
     pointer-events: all;
 }
 
-
 .modal {
-    background: var(--text-color);
+    background: var(--background-color);
     padding: 20px;
     border-radius: 12px;
-
     width: 90%;
     max-width: 400px;
-
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
     animation: scaleIn 0.2s ease;
 }
+
+#modal-add-favorite{
+    display:grid;
+    place-items:center;
+    grid-template-rows: 1fr auto;
+    margin-left: 5dvh;
+    margin-right: 5dvh;
+    font-family: Arial, sans-serif;
+}
+
+#favoritos-form{
+    margin-top:1em;
+}
+
+#favoritos-form-header{
+    display:grid;
+    place-items:center;
+    width:100%;
+}
+
+legend{
+    cursor: pointer;
+    font-weight:bold;
+    color:var(--text-color);
+}
+
+hr{
+    width:100%;
+}
+
+#priority-container{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+#motivo-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items:center;
+    gap: 0.5em;
+    align-items: center;
+}
+
+#comentario-container{
+    display:grid;
+    place-items:center;
+    width: 100%;
+    gap: 0.5em;
+}
+
+#favoritos-comentario{
+    border-radius:10px;
+    height:20dvh;
+}
+
+.radio-priority{
+    color: var(--text-color);
+    font-weight:bold;
+}
+
+.radio-motivo{
+    color: var(--text-color);
+    grid-column: 1 / -1; /* ocupa todo el ancho */
+    font-weight:bold;
+}
+
+.input-form{
+    width: 95%;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    place-items: center;
+    gap: 2em;
+}
+
 
 .modal input {
     width: 100%;
