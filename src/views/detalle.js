@@ -1,6 +1,7 @@
 import { Navbar } from "../components/navbar.js";
 import { Footer } from "../components/footer.js";
 import { Header } from "../components/header.js";
+import { modalFavoritos } from "../components/modalFavoritos.js";
 
 export function Detalle() {
 
@@ -31,5 +32,6 @@ function loadDetalle() {
                     </div>
                     <p id="detail-text"></p>
                 </div>
+                
             </main>`;
 }

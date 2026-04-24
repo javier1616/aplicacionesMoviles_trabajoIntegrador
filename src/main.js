@@ -2,6 +2,8 @@ import { render, initRouter } from "./router.js";
 import { Navbar } from "./components/navbar.js";
 import { initDataStore } from "./utils/store.js";
 import { getPilotosStore, getCircuitosStore } from "./utils/store.js";
+import { modalFavoritos } from "./components/modalFavoritos.js";
+import { closeModal } from "./behavior/modalFavoritos.behavior.js";
 
 /* preguntar al profe si se puede usar window.navigate o es mejor otra cosa */
 import { navigate } from "./router.js";
@@ -9,6 +11,7 @@ window.navigate = navigate;
 /* ------------------------------------------------------------------------ */
 
 document.addEventListener("DOMContentLoaded", async () => {
+
 
     //Carga el comportamiento que debe tener cualquier card al contenedor de vistas
     //entonces, cualquier card de la app, hereda ese comportamiento (event delegation)

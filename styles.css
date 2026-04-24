@@ -32,6 +32,10 @@ body{
     margin: 0;
 }
 
+.hidden{
+    display:none;
+}
+
 .sentinel{
     height:2px;
     width:2px;
@@ -608,6 +612,67 @@ li{
 
 .input-search{
     width:75%;
+}
+
+/* ----------------------------------------------------------- */
+/*                            MODAL                            */
+/* ----------------------------------------------------------- */
+
+#modal-container{
+    position: fixed;
+    inset: 0;      /* para que ocupe toda la pantalla (para que el backdrop ocupe toda la pantalla)*/
+    z-index: 100;
+    pointer-events: none;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: all;
+}
+
+
+.modal {
+    background: var(--text-color);
+    padding: 20px;
+    border-radius: 12px;
+
+    width: 90%;
+    max-width: 400px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    animation: scaleIn 0.2s ease;
+}
+
+.modal input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.modal .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 

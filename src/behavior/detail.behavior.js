@@ -1,10 +1,11 @@
 
 import { wiki_API, wiki_API_v2 } from "../config.js";  
 import { getImage, getImageAndExtract } from "../api/http.js"
+import { modalFavoritos } from "../components/modalFavoritos.js";
+import { openModal } from "./modalFavoritos.behavior.js";
 
 export async function detailBehavior() {
 
-    let favorite_item;
 
     //toma la info de localStorage
     const detail_data_view = JSON.parse(localStorage.getItem("detail_view"));
@@ -18,7 +19,7 @@ export async function detailBehavior() {
     // };
 
 
-    console.log("Datos guardados desde la card que pasan a detai_data_view");
+    console.log("Datos guardados desde la card que pasan a detail_data_view");
     console.log(detail_data_view);
 
 
@@ -36,10 +37,18 @@ export async function detailBehavior() {
         img.src = "./src/assets/icons/star-full-yellow.svg";
     }
 
-    //comportamiento del boton agregar a favoritos cuando clickeo
+
+    //comportamiento del boton agregar a favoritos (estrella) cuando clickeo
     favorite_btn.addEventListener("click", () =>{
 
         console.log("clic en estrella");
+
+        //Se carga el modal para agregar a favoritos
+        //SE CARGA ACA PARA EVITAR BUG DE DUPLICACION DE EVENTOS
+        //si lo cargo en home, o en detalles, al no destruirlo
+        //como los eventos estan en open modal, si no lo destruyo se van duplicando
+        const modal_container = document.getElementById("modal-container");
+        modal_container.innerHTML = modalFavoritos(); //inserta el modal
 
         //apenas presiono busco si está 
         const index = favorite_array.findIndex(elem => elem.id == detail_data_view.id);
@@ -55,49 +64,14 @@ export async function detailBehavior() {
 
         } else {
 
-            //si no está lo agrego y pinto la estrella  
-            //Guarda en favoritos los datos necesarios para mostrar la card...
+            //si no está tiene que aparecer el formulariooo....
 
-            switch(detail_data_view.type){
-                case("driver"):
-                    favorite_item = {
-                        type : detail_data_view.type,
-                        id : detail_data_view.id,
-                        url : detail_data_view.url,
-                        name : detail_data_view.name,
-                        img : "./src/assets/icons/casco2.png"
-                       // code :       <li> Code: ${data.code} </li>,
-                       // number :     <li> Number: ${data.permanentNumber}</li>,
-                       // nacionality :   <li> Nacionality: ${data.nationality} </li>,
-                       // date : new Date()
-                    };
-                break;
-
-                case("circuit"):
-                    favorite_item = {
-                        type : detail_data_view.type,
-                        id : detail_data_view.id,
-                        url : detail_data_view.url,
-                        name : detail_data_view.name,
-                        img : "./src/assets/icons/circuito.png"
-                        // country :   <li> Country: ${data.nationality} </li>,
-                        //date : new Date()
-                };
-                break;
-
-            };
-
-            favorite_array.push(favorite_item);
-
-            //reemplazo todo el array con la modificacion
-            localStorage.setItem("favorite_array", JSON.stringify(favorite_array));
-
-            //pinto la estrella
-            img.src = "./src/assets/icons/star-full-yellow.svg";
-
+            console.log("momento de abrir el modal y agregar a favoritos")
+            openModal(detail_data_view,favorite_array);
+            
         }
+    });
 
-    })
 
     if(detail_data_view.type)       //primero valido si existe
     {
