@@ -36,7 +36,7 @@ export function modalFavoritos(){
                         <div id="comentario-container">
                             <label for="favoritos-comentario">Comentario</label>
                             <textarea id="favoritos-comentario" name="comentario"></textarea>
-                            <small id="favoritos-error-comentario"></small>
+                            <small id="favoritos-error-comentario" class="error"></small>
                         </div>
                     </form>
                     <div class="actions">

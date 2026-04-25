@@ -2,7 +2,7 @@
 export function circuitCard(data) {
     return`
     <div class="circuit-card card" data-type="circuit" data-id="${data.ciruitId}" data-url="${data.url}" data-lat="${data.Location.lat}" data-long="${data.Location.long}" data-locality="${data.Location.locality}">
-        <img src="./src/assets/icons/pista2.png" class="card-img-icon" alt="imagen">
+        <img src="./src/assets/icons/circuito2.png" class="card-img-icon" alt="imagen">
         <div class="card-body">
             <ul class="card-description">
                 <li> ${data.circuitName} </li>

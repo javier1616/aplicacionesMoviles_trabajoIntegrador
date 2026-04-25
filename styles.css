@@ -651,8 +651,8 @@ li{
     display:grid;
     place-items:center;
     grid-template-rows: 1fr auto;
-    margin-left: 5dvh;
-    margin-right: 5dvh;
+    margin-left: 3dvh;
+    margin-right: 3dvh;
     font-family: Arial, sans-serif;
 }
 

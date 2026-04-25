@@ -37,7 +37,7 @@ const validadores = {
     cadenaVacia: value => value.trim() === "",
     //soloCaracteres_az_AZ: value => /^[a-zA-Z]+$/.test(value),  //no incluye cadena vacía
     soloCaracteres_az_AZ: value => /^[a-zA-Z]*$/.test(value),  // incluye cadena vacía
-    
+    cantidadPermitida: value => value.length <= 50    
 };
 
 export function validar(cadena, tipo, lista) {
@@ -65,7 +65,28 @@ export function validar(cadena, tipo, lista) {
                 response.error = tipo;
                 response.message = "Error en campo nacionalidad.";
             };  
-            break;     
+            break;
+        case "prioridad":
+            if(!lista.includes(cadena))
+            {
+                response.error = tipo;
+                response.message = "Debe seleccionar un nivel de prioridad.";
+            };  
+            break;
+        case "motivo":
+            if(!lista.includes(cadena))
+            {
+                response.error = tipo;
+                response.message = "Debe seleccionar un motivo";
+            };  
+            break;
+        case "comentario":
+            if(!validadores.cantidadPermitida(cadena))
+            {
+                response.error = tipo;
+                response.message = "Debe escribir como máximo 50 caracteres.";
+            };  
+            break;
     }
 
     return response;
@@ -81,5 +102,35 @@ export function formularioVacio(nombre,season,nacionalidad_pais){
             validadores.cadenaVacia(valor_season) &&
             validadores.cadenaVacia(nacionalidad_pais)
         );
+
+}
+
+export function validarFormularioFavoritos(prioridad,motivo,comentario){
+
+    const result = []
+
+    let response;
+
+    response = validar(prioridad,"prioridad",["1","2","3","4","5"]);
+
+    if (Object.keys(response).length > 0) {
+        result.push(response);
+    }
+
+    response = validar(motivo,"motivo",["Rendimiento","Estrategia","Clasificación","Carrera"]);
+
+    if (Object.keys(response).length > 0) {
+        result.push(response);
+    }
+
+    response = validar(comentario,"comentario",[]);
+
+    if (Object.keys(response).length > 0) {
+        result.push(response);
+    }
+    
+
+    return result;
+    
 
 }

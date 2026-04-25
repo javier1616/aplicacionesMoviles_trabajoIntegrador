@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             id : card.dataset.id,
                             url : card.dataset.url,
                             name : card.dataset.name,
-                            img : "./src/assets/icons/circuito.png",
+                            img : "./src/assets/icons/circuito2.png",
                             // country :   <li> Country: ${data.nationality} </li>,
                             date : new Date()
                     };

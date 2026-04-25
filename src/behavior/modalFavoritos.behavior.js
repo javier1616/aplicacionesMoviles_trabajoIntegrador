@@ -1,3 +1,5 @@
+import { validarFormularioFavoritos } from "../utils/validarFormulario.js";
+
 export function openModal(detail_data_view,favorite_array) {
 
     const modal = document.getElementById("modal-container");
@@ -30,65 +32,136 @@ export function openModal(detail_data_view,favorite_array) {
 
     console.log("modal abierto");
 
+
+    //para que actualice mensajes de error cuando cambia el formulario
+    document.getElementById("favoritos-form")
+                    .addEventListener("input", handleFavoritosInput);
+
     //Comportamiento para agregar a favoritos
     const agregar_favoritos_btn = document.getElementById("modal-add-favorite-btn");
 
     agregar_favoritos_btn.addEventListener("click", (e) => {
 
-//        if(!datosValidos())  return;     //si hay algo mal sale y NO cierra el modal
+        //vuelve a validar errores para evitar alguna manipulacion de información
 
-        let favorite_item;
+        const form_favoritos = document.getElementById("favoritos-form");
+        const prioridad = form_favoritos.querySelector('input[name="priority"]:checked')?.value;
+        const motivo = form_favoritos.querySelector('input[name="motivo"]:checked')?.value;
+        const comentario = document.getElementById("favoritos-comentario").value;
 
-        //si todo es correcto lo agrego y pinto la estrella  
-        //Guarda en favoritos los datos necesarios para mostrar la card luego...
-        switch(detail_data_view.type){
-            case("driver"):
-                favorite_item = {
-                    type : detail_data_view.type,
-                    id : detail_data_view.id,
-                    url : detail_data_view.url,
-                    name : detail_data_view.name,
-                    img : "./src/assets/icons/casco2.png"
-                   // code :       <li> Code: ${data.code} </li>,
-                   // number :     <li> Number: ${data.permanentNumber}</li>,
-                   // nacionality :   <li> Nacionality: ${data.nationality} </li>,
-                   // date : new Date()
+        const error_prioridad = document.getElementById("favoritos-error-priority");
+        const error_motivo = document.getElementById("favoritos-error-motivo");
+        const error_comentario = document.getElementById("favoritos-error-comentario");
+
+        const errores = validarFormularioFavoritos(prioridad,motivo,comentario);
+
+        console.log("errores: ", JSON.stringify(errores));
+        
+        if(Object.keys(errores).length > 0)
+        {
+
+            const errorPrioridad = errores.find(e => e.error === "prioridad");
+            const errorMotivo = errores.find(e => e.error === "motivo");
+            const errorComentario = errores.find(e => e.error === "comentario");
+        
+            console.log(errorPrioridad);
+
+            if (errorPrioridad){
+                console.log("entra en error prioridad");
+                error_prioridad.textContent = errorPrioridad.message;
+                error_prioridad.style.display = "block";
+            }
+            else
+            {
+                error_prioridad.style.display = "none";
+            }
+        
+            if (errorMotivo) {
+                error_motivo.textContent = errorMotivo.message;
+                error_motivo.style.display = "block";
+            }
+            else
+            {
+                error_motivo.style.display = "none";
+            }
+
+            if (errorComentario) {
+                error_comentario.textContent = errorComentario.message;
+                error_comentario.style.display = "block";
+            }
+            else
+            {
+                error_comentario.style.display = "none";
+            }
+
+            return;     //si hay errores corta la ejecución y no cierra el modal
+
+        } else {
+
+            console.log("no hay errores, agregando a favoritos...");
+
+            error_prioridad.style.display = "none";
+            error_motivo.style.display = "none";
+            error_comentario.style.display = "none";
+
+            let favorite_item;
+
+            //si todo es correcto lo agrego y pinto la estrella  
+            //Guarda en favoritos los datos necesarios para mostrar la card luego...
+            switch(detail_data_view.type){
+                case("driver"):
+                    favorite_item = {
+                        type : detail_data_view.type,
+                        id : detail_data_view.id,
+                        url : detail_data_view.url,
+                        name : detail_data_view.name,
+                        img : "./src/assets/icons/casco2.png",
+                        prioridad : prioridad,
+                        motivo : motivo,
+                        comentario: comentario.length > 0 ? comentario : ""
+                       // code :       <li> Code: ${data.code} </li>,
+                       // number :     <li> Number: ${data.permanentNumber}</li>,
+                       // nacionality :   <li> Nacionality: ${data.nationality} </li>,
+                       // date : new Date()
+                    };
+                break;
+
+                case("circuit"):
+                    favorite_item = {
+                        type : detail_data_view.type,
+                        id : detail_data_view.id,
+                        url : detail_data_view.url,
+                        name : detail_data_view.name,
+                        img : "./src/assets/icons/circuito2.png",
+                        prioridad : prioridad,
+                        motivo : motivo,
+                        comentario: comentario.length > 0 ? comentario : ""
+                        // country :   <li> Country: ${data.nationality} </li>,
+                        //date : new Date()
                 };
-            break;
+                break;
 
-            case("circuit"):
-                favorite_item = {
-                    type : detail_data_view.type,
-                    id : detail_data_view.id,
-                    url : detail_data_view.url,
-                    name : detail_data_view.name,
-                    img : "./src/assets/icons/circuito.png"
-                    // country :   <li> Country: ${data.nationality} </li>,
-                    //date : new Date()
             };
-            break;
+
+            favorite_array.push(favorite_item);
+
+            //reemplazo todo el array con la modificacion
+            localStorage.setItem("favorite_array", JSON.stringify(favorite_array));
+
+            //pinto la estrella
+            const favorite_btn = document.getElementById("favorite-btn");
+            const img = favorite_btn.querySelector('img');
+            img.src = "./src/assets/icons/star-full-yellow.svg";
+
+            alert("Agregado a favoritos");
+
+            closeModal();
 
         };
-
-        favorite_array.push(favorite_item);
-
-        //reemplazo todo el array con la modificacion
-        localStorage.setItem("favorite_array", JSON.stringify(favorite_array));
-
-        //pinto la estrella
-        const favorite_btn = document.getElementById("favorite-btn");
-        const img = favorite_btn.querySelector('img');
-        img.src = "./src/assets/icons/star-full-yellow.svg";
-
-        alert("Agregado a favoritos");
-
-        closeModal();
-
+        
     });
 
 }
-
-    
 
 export function closeModal() {
     console.log("cerrando el modal...");
@@ -97,3 +170,65 @@ export function closeModal() {
     document.body.style.overflow = "";  // activa nuevamente el scroll
 }
 
+
+function handleFavoritosInput(){
+
+    const form_favoritos = document.getElementById("favoritos-form");
+    const prioridad = form_favoritos.querySelector('input[name="priority"]:checked')?.value;
+    const motivo = form_favoritos.querySelector('input[name="motivo"]:checked')?.value;
+    const comentario = document.getElementById("favoritos-comentario").value;
+
+    console.log("datos del formulario");
+    console.log("prioridad: " + prioridad + " motivo: " + motivo + " comentario: " + comentario);
+    
+    const error_prioridad = document.getElementById("favoritos-error-priority");
+    const error_motivo = document.getElementById("favoritos-error-motivo");
+    const error_comentario = document.getElementById("favoritos-error-comentario");
+
+    const errores = validarFormularioFavoritos(prioridad,motivo,comentario);
+
+    console.log("errores: ", JSON.stringify(errores));
+    
+    if(Object.keys(errores).length > 0)
+    {
+
+        const errorPrioridad = errores.find(e => e.error === "prioridad");
+        const errorMotivo = errores.find(e => e.error === "motivo");
+        const errorComentario = errores.find(e => e.error === "comentario");
+
+        if (errorPrioridad){
+            console.log("entra en error prioridad");
+            error_prioridad.textContent = errorPrioridad.message;
+            error_prioridad.style.display = "block";
+        }
+        else
+        {
+            error_prioridad.style.display = "none";
+        }
+    
+        if (errorMotivo) {
+            error_motivo.textContent = errorMotivo.message;
+            error_motivo.style.display = "block";
+        }
+        else
+        {
+            error_motivo.style.display = "none";
+        }
+
+        if (errorComentario) {
+            error_comentario.textContent = errorComentario.message;
+            error_comentario.style.display = "block";
+        }
+        else
+        {
+            error_comentario.style.display = "none";
+        }
+    }
+    else
+    {
+        error_prioridad.style.display = "none";
+        error_motivo.style.display = "none";
+        error_comentario.style.display = "none";
+    }
+
+}
