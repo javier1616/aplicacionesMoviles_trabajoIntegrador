@@ -2,6 +2,7 @@
 import { contactoBehavior } from "./contacto.behavior.js";
 import { detailBehavior } from "./detail.behavior.js";
 import { teamBehavior } from "./team.behavior.js";
+import { championshipBehavior } from "./championship.behavior.js";
 
 import { getPilotos, getCircuitos, getTeam } from "../api/http.js";
 import { initDataStore, getPilotosStore, getCircuitosStore, getNacionalidadesStore, getPaisesStore} from "../utils/store.js";
@@ -10,6 +11,7 @@ import { circuitCard } from "../components/circuitsCard.js";
 
 import { validarFormulario, formularioVacio } from "../utils/validarFormulario.js";
 import { sentinels_state, pilotos_filters_state, circuitos_filters_state } from "../utils/states.js";
+import { Championship } from "../views/championship.js";
 
 export function loadBehavior(path) {
 
@@ -265,6 +267,10 @@ export function loadBehavior(path) {
 
         case "/contact":
             contactoBehavior();
+        break;
+
+        case "/championship":
+            championshipBehavior();
         break;
 
         case "/team":

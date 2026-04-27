@@ -90,3 +90,5 @@ export const jolpica_circuit_standings = ""
 
 /* Tabla del campeonato de pilotos de la temporada actual */
 export const jolpica_championship_drivers = "https://api.jolpi.ca/ergast/f1/current/driverstandings/"
+/* Tabla del campeonato de constructores de la temporada actual */
+export const jolpica_championship_constructors = "https://api.jolpi.ca/ergast/f1/current/constructorstandings/"

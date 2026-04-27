@@ -705,6 +705,59 @@ li{
 }
 
 /* ----------------------------------------------------------- */
+/*                      Vista de Campeonato                    */
+/* ----------------------------------------------------------- */
+
+#championship-container{
+    display:grid;
+    place-items:center;
+    background: var(--background-color);
+    margin-top:0.25em;
+    color: var(--text-color);
+    padding-top:2vh;
+    padding-bottom:2vh;
+}
+
+#championship-tables-container{
+    display:grid;
+    place-items:center;
+    width:90%;
+}
+
+#championship-tables-container .table-title{
+    text-align:center;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+/* hasta aca ponele que va bien */
+
+#championship-tables-container .table{
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+#championship-tables-container th,
+#championship-tables-container td {
+    border-bottom: 1px solid #f0f0f0;
+    padding : 0.5em;
+    vertical-align: middle;
+    text-align:center;
+}
+
+#championship-tables-container tr:last-child td {
+    border-bottom: none;
+}
+
+/*primera columna de las tablas alineada a la izquierda*/
+#championship-tables-container td:first-child,
+#championship-tables-container th:first-child {
+    text-align: left;
+}
+
+
+
+/* ----------------------------------------------------------- */
 /*                          ACCORDION                          */
 /* ----------------------------------------------------------- */
 

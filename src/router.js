@@ -6,12 +6,14 @@ import { Detalle } from "./views/detalle.js";
 import { Historial } from "./views/historial.js";
 import { Favorite } from "./views/favorite.js";
 import { Team } from "./views/team.js";
+import { Championship } from "./views/championship.js";
 
 import { loadBehavior } from "./behavior/loadBehavior.js";
 
 const routes = {
   "/": Home,
   "/search": Busqueda,
+  "/championship": Championship,
   "/contact": Contacto,
   "/detail": Detalle,
   "/history": Historial,

@@ -9,9 +9,9 @@ export function Navbar() {
         <img class="icono" src="./src/assets/icons/binoculares3.png" />
         <span class="navbar-icon-description">Busqueda</span>
       </button>
-      <button class="navbar-button" onclick="window.navigate('/detail')">
-        <img class="icono" src="./src/assets/icons/boxes.png" />
-        <span class="navbar-icon-description">Detalle</span>
+      <button class="navbar-button" onclick="window.navigate('/championship')">
+        <img class="icono" src="./src/assets/icons/trofeo3.png" />
+        <span class="navbar-icon-description">Campeonato</span>
       </button>
       <button class="navbar-button" onclick="window.navigate('/favorite')">
         <img class="icono" src="./src/assets/icons/medalla.png" />

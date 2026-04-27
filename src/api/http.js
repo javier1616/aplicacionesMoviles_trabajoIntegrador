@@ -1,4 +1,4 @@
-import { jolpica_url, jolpica_url_all, jolpica_constructors, jolpica_championship_drivers } from "../config.js";
+import { jolpica_url, jolpica_url_all, jolpica_constructors, jolpica_championship_drivers, jolpica_championship_constructors } from "../config.js";
 import { drivers_response } from "../response_mocks/drivers_mock.js";
 import { circuits_response } from "../response_mocks/circuits_mock.js";
 
@@ -279,9 +279,25 @@ export async function getCurrentSeasonDriversChampionship(){
     //let result = results.MRData.ConstructorTable.Constructors.find(c => 
     //                c.constructorId === id);
     
-    console.log("obteniendo tabla de resultados del campeonato")
+    console.log("obteniendo tabla de resultados del campeonato de pilotos")
     console.log(results);
     
     return results.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+
+}
+
+export async function getCurrentSeasonConstructorsChampionship(){
+
+    let url = jolpica_championship_constructors;
+
+    let results = await request(url);
+    
+    //let result = results.MRData.ConstructorTable.Constructors.find(c => 
+    //                c.constructorId === id);
+    
+    console.log("obteniendo tabla de resultados del campeonato de constructores")
+    console.log(results);
+    
+    return results.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
 
 }
