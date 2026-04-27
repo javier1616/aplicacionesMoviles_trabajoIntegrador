@@ -77,7 +77,8 @@ export async function getImage(url){
     return imageUrl;
 }
 
-
+/* Con algun que otro piloto no tengo datos en español, así que falla */
+/*
 export async function getImageAndExtract(url){
 
     let wiki_result = await request(url);
@@ -91,6 +92,41 @@ export async function getImageAndExtract(url){
     }
     
     return result;
+}*/
+
+
+export async function getImageAndExtract(url, fallbackUrl){
+
+    try {
+        let wiki_result = await request(url);
+
+        return {
+            image_url: wiki_result.thumbnail?.source,
+            extract: wiki_result.extract
+        };
+
+    } catch (error) {
+
+        console.log("Fallo ES, probando EN...");
+
+        try {
+            let wiki_result = await request(fallbackUrl);
+
+            return {
+                image_url: wiki_result.thumbnail?.source,
+                extract: wiki_result.extract
+            };
+
+        } catch (error2) {
+
+            console.log("Fallo también EN");
+
+            return {
+                image_url: null,
+                extract: "Sin información disponible"
+            };
+        }
+    }
 }
 
 

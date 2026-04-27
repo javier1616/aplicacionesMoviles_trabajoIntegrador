@@ -1,5 +1,5 @@
 
-import { wiki_API, wiki_API_v2 } from "../config.js";  
+import { wiki_API, wiki_API_v2, wiki_API_v2_en } from "../config.js";  
 import { getCurrentSeasonDriversChampionship, getImage, getImageAndExtract, getResults } from "../api/http.js"
 import { modalFavoritos } from "../components/modalFavoritos.js";
 import { openModal } from "./modalFavoritos.behavior.js";
@@ -162,6 +162,24 @@ export async function detailBehavior() {
             //proceso las ultimas 3 carreras
             const lastRaces = standings.slice(-3);
 
+            console.log("last races: "+ lastRaces)
+
+            let carreras =[];
+
+            lastRaces.forEach(elem => {
+
+                console.log(elem.Circuit.circuitName);
+
+                carreras.push({
+                    name : elem.Circuit.circuitName,
+                    start : elem.Results[0].grid,
+                    end : elem.Results[0].position,
+                    points : elem.Results[0].points
+                });
+
+            });
+
+            /*
             const carrera1 = {
                 name : lastRaces[0].Circuit.circuitName,
                 start : lastRaces[0].Results[0].grid,
@@ -182,14 +200,17 @@ export async function detailBehavior() {
                 end : lastRaces[2].Results[0].position,
                 points : lastRaces[2].Results[0].points
             }
+            */
 
-            const lastSeason = lastRaces[2].season;
+            const lastSeason = lastRaces.at(-1).season; //el ultimo elemento
 
             const lastRacesTitle = document.getElementById("last-races-title");
             lastRacesTitle.innerHTML = `Ultimas carreras (${lastSeason})`;
 
+            
             const tableContainer = document.getElementById("table-container");
-            tableContainer.innerHTML += lastRacesTable(carrera1,carrera2,carrera3);
+            console.log("Carreras: " + JSON.stringify(carreras));
+            tableContainer.innerHTML += lastRacesTable(carreras);
 
             standings.forEach( elem => {
 
@@ -199,7 +220,23 @@ export async function detailBehavior() {
 
                 console.log("date: " + elem.date);
                 console.log("position: " + position);
-                finish_grid[position - 1].value++;
+
+                //en 1963 largaron 110 autos en la parrilla
+                if(position - 1 >= finish_grid.length)
+                {
+                    while( position -1 >= finish_grid.length)
+                    {
+                        finish_grid.push({label: `P${finish_grid.length+1}`, value: 0})
+                    };
+                    console.log("así me quedo al final")
+                    console.log(finish_grid)
+                    console.log("insertar: " + position);
+                    finish_grid[position - 1].value++;
+                }
+                else
+                {
+                    finish_grid[position - 1].value++;
+                }
 
                 if(position == 1) cantidad_victorias = cantidad_victorias + 1;
                 if(position < 4 && position > 0 ) cantidad_podios = cantidad_podios + 1;
@@ -256,7 +293,8 @@ export async function detailBehavior() {
             const lastPart = detail_data_view.url.split("/").pop();
 
             //const image_url = await getImage( wiki_API + lastPart);
-            const image_url_and_extract = await getImageAndExtract( wiki_API_v2 + lastPart);
+            //tiene la url en ingles como fallback por si falla
+            const image_url_and_extract = await getImageAndExtract( wiki_API_v2 + lastPart, wiki_API_v2_en + lastPart);
             const extract = image_url_and_extract.extract;
             const image_url = image_url_and_extract.image_url;
 
@@ -311,9 +349,9 @@ export async function detailBehavior() {
 
             const championshipTable = document.getElementById("championship-table-position-container");
 
-            if( carrera3.season < new Date().getFullYear())
+            if( lastSeason < new Date().getFullYear())
             {
-                championshipTable.innerHTML = "No es un corredor activo"
+                championshipTable.innerHTML = `<h3 style="text-align:center;">No es un corredor activo</h3>`;
             }
             else
             {
@@ -340,7 +378,8 @@ export async function detailBehavior() {
             const lastPart = detail_data_view.url.split("/").pop();
 
             //const image_url = await getImage( wiki_API + lastPart);
-            const image_url_and_extract = await getImageAndExtract( wiki_API_v2 + lastPart);
+            //tiene la url en ingles como fallback por si falla
+            const image_url_and_extract = await getImageAndExtract( wiki_API_v2 + lastPart, wiki_API_v2_en + lastPart);
             const extract = image_url_and_extract.extract;
             const image_url = image_url_and_extract.image_url;
 

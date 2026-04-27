@@ -1,5 +1,18 @@
 
-export function lastRacesTable(carrera1,carrera2,carrera3) {
+export function lastRacesTable(carreras) {
+    
+    let datosDeLaTabla = ``;
+
+    carreras.forEach(element => {
+        datosDeLaTabla += `<tr>
+                                <td>${element.name}</td>
+                                <td>${element.start}</td>
+                                <td>${element.end}</td>
+                                <td>${element.points}</td>
+                            </tr>`
+    });
+    
+    
     return `<table id="last-races-table">
                 <thead>
                     <tr>
@@ -10,24 +23,7 @@ export function lastRacesTable(carrera1,carrera2,carrera3) {
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    <tr>
-                        <td>${carrera1.name}</td>
-                        <td>${carrera1.start}</td>
-                        <td>${carrera1.end}</td>
-                        <td>${carrera1.points}</td>
-                    </tr>
-                    <tr>
-                        <td>${carrera2.name}</td>
-                        <td>${carrera2.start}</td>
-                        <td>${carrera2.end}</td>
-                        <td>${carrera2.points}</td>
-                    </tr>
-                    <tr>
-                        <td>${carrera3.name}</td>
-                        <td>${carrera3.start}</td>
-                        <td>${carrera3.end}</td>
-                        <td>${carrera3.points}</td>
-                    </tr>
+                    ${datosDeLaTabla}
                 </tbody>
             </table>`;
 }

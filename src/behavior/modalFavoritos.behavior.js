@@ -122,6 +122,7 @@ export function openModal(detail_data_view) {
                         name : detail_data_view.name,
                         img : "./src/assets/icons/casco2.png",
                         prioridad : prioridad,
+                        prioridadStars: "★".repeat(prioridad),
                         motivo : motivo,
                         comentario: comentario.length > 0 ? comentario : ""
                        // code :       <li> Code: ${data.code} </li>,
@@ -140,6 +141,7 @@ export function openModal(detail_data_view) {
                         name : detail_data_view.name,
                         img : "./src/assets/icons/circuito2.png",
                         prioridad : prioridad,
+                        prioridadStars: "★".repeat(prioridad),
                         motivo : motivo,
                         comentario: comentario.length > 0 ? comentario : ""
                         // country :   <li> Country: ${data.nationality} </li>,

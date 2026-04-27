@@ -4,11 +4,12 @@ export function favoriteCard(data) {
     <div class="favorite-card card" data-type="${data.type}" data-id="${data.id}" data-url="${data.url}" data-name="${data.name}">
         <img src=${data.img} class="card-img-icon" alt="imagen">
         <div class="card-body">
-        <p class="card-title">${data.name}<p>
-            <p class="card-description">
-                Ver descripcion.<br>
-                Ver si inyectas distintos tipos de cards.
-            </p>
+            <p class="card-title">${data.name}</p>
+            <ul class="card-description">
+                <li>${data.prioridadStars}</li>
+                <li>Motivo: ${data.motivo}</li>
+                <li>${data.comentario}</li>
+            </ul>
         </div>
         <div class="card-footer">
             <button class="btn btn-primary favorite-remove-btn">
