@@ -451,7 +451,7 @@ li{
 
 #detail-container{
     display:grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto auto 1fr;
     place-items:center;
     background: var(--background-color);
     margin-top:0.25em;
@@ -465,6 +465,13 @@ li{
     margin-top:1em;
     margin-bottom:1em;
     width:90%;
+}
+
+#info-container{
+    display:grid;
+    grid-template-columns: 4fr 8fr;
+    place-items:center;
+    width:95%;
 }
 
 #detail-img-container{
@@ -488,6 +495,160 @@ li{
 #detail-text{
     width:90%;
     font-size:15px;
+    text-align:justify;
+    margin-top:2em;
+}
+
+#stats-table-container{
+    font-size: 0.75rem;
+}
+
+.stats-reg{
+    display:grid;
+    grid-template-columns:auto auto;
+    justify-content: space-between;
+}
+
+#race-finished-stats{
+    border-radius: 10px;
+    border: solid black 1px;
+
+}
+
+#charts-container{
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1.5em;
+    place-items: center;
+}
+
+#chart{
+    display:grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    /*border: solid black 1px;*/
+    /*border-radius: 10px;*/
+    place-items:center;
+}
+
+#chart-title{
+    text-align:center;
+}
+
+#pieChart{
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 1em;
+}
+
+#avg-position-number-container{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    /*border-radius: 10px;*/
+    /*border: solid black 1px;*/
+    /*width: 100%;*/
+    height: 100%;
+    place-items:center;
+}
+
+#avg-position-number-title{
+}
+
+#avg-position-number{
+    font-size:2rem;
+}
+
+#avg-position-number small{
+    font-size:0.5em;
+}
+
+.positivo {
+  color: #22c55e; /* verde */
+}
+
+.negativo {
+  color: var(--text-color-red); /* rojo */
+}
+
+.neutro {
+  color: #eab308; /* amarillo */
+}
+
+#table-container{
+    margin-top:1em;
+    font-size: 0.75rem;
+    width:90%;
+}
+
+#last-races-title{
+    display: grid;
+    place-items:center;
+    margin-bottom:1em;
+}
+
+#last-races-table {
+    border-collapse: collapse;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#last-races-table th,
+#last-races-table td {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0.5em 0.5em;
+    vertical-align: middle;
+    text-align:center;
+}
+
+#last-races-table tr:last-child td {
+    border-bottom: none;
+}
+
+/*primera columna de las tablas alineada a la izquierda*/
+#last-races-table td:first-child,
+#last-races-table th:first-child {
+    text-align: left;
+}
+
+
+#championship-table-position-container{
+    margin-top:1em;
+    font-size: 0.75rem;
+    width:90%;
+}
+
+#championship-one-row-title{
+    display: grid;
+    place-items:center;
+    margin:1em;
+}
+
+#driver-championship-one-row-table {
+    border-collapse: collapse;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    width:100%;
+}
+
+#driver-championship-one-row-table th,
+#driver-championship-one-row-table td {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0.5em 0.5em;
+    vertical-align: middle;
+    text-align:center;
+}
+
+#driver-championship-one-row-table tr:last-child td {
+    border-bottom: none;
+}
+
+/*primera columna de las tablas alineada a la izquierda*/
+#driver-championship-one-row-table td:first-child,
+#driver-championship-one-row-table th:first-child {
+    text-align: left;
 }
 
 

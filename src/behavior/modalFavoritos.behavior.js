@@ -1,11 +1,14 @@
 import { validarFormularioFavoritos } from "../utils/validarFormulario.js";
 
-export function openModal(detail_data_view,favorite_array) {
+export function openModal(detail_data_view) {
 
     const modal = document.getElementById("modal-container");
 
     modal.classList.remove("hidden"); //muestra el modal
     document.body.style.overflow = "hidden";    //bloquea el scroll
+
+    //toma la info de localStorage. Si no existe cargo con []
+    let favorite_array = JSON.parse(localStorage.getItem("favorite_array")) || [];
 
     //Comportamientos para cierre del modal
     //para que cierre el modal si toco ESC
@@ -41,6 +44,8 @@ export function openModal(detail_data_view,favorite_array) {
     const agregar_favoritos_btn = document.getElementById("modal-add-favorite-btn");
 
     agregar_favoritos_btn.addEventListener("click", (e) => {
+
+        console.log("click handler ejecutado");
 
         //vuelve a validar errores para evitar alguna manipulacion de información
 
@@ -109,7 +114,7 @@ export function openModal(detail_data_view,favorite_array) {
             //si todo es correcto lo agrego y pinto la estrella  
             //Guarda en favoritos los datos necesarios para mostrar la card luego...
             switch(detail_data_view.type){
-                case("driver"):
+                case("drivers"):
                     favorite_item = {
                         type : detail_data_view.type,
                         id : detail_data_view.id,
@@ -124,9 +129,10 @@ export function openModal(detail_data_view,favorite_array) {
                        // nacionality :   <li> Nacionality: ${data.nationality} </li>,
                        // date : new Date()
                     };
+                    favorite_array.push(favorite_item);
                 break;
 
-                case("circuit"):
+                case("circuits"):
                     favorite_item = {
                         type : detail_data_view.type,
                         id : detail_data_view.id,
@@ -138,12 +144,14 @@ export function openModal(detail_data_view,favorite_array) {
                         comentario: comentario.length > 0 ? comentario : ""
                         // country :   <li> Country: ${data.nationality} </li>,
                         //date : new Date()
-                };
+                    };
+                    favorite_array.push(favorite_item);
                 break;
 
             };
 
-            favorite_array.push(favorite_item);
+            console.log("Favorite_array");
+            console.log(favorite_array);
 
             //reemplazo todo el array con la modificacion
             localStorage.setItem("favorite_array", JSON.stringify(favorite_array));

@@ -29,7 +29,7 @@ export async function teamBehavior() {
 
     //viene algo como :
     // {
-    //    type: "driver",       --> driver/circuit (por ahora solo esos)
+    //    type: "drivers",       --> drivers/circuits (por ahora solo esos)
     //    id: card.dataset.id,  --> id relativo al driver/circuit que estoy viendo 
     //    url:
     //    name: 
@@ -39,7 +39,7 @@ export async function teamBehavior() {
     {
         //cuando renderices distinto haces un if para cada caso
         //capaz tenes que separar por los fetches
-        if(detail_data_view.type == "driver" || detail_data_view.type == "circuit")
+        if(detail_data_view.type == "drivers" || detail_data_view.type == "circuits")
         {
 
             const title = document.getElementById('detail-title');

@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             //para renderizar la vista details
             //(estandariza mecanismo para todos los renders de todas las cards)
 
+            
 
             const detail_data_view = {  type: card.dataset.type,
                                         id: card.dataset.id,
@@ -70,11 +71,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         name: card.dataset.name
             };
 
+            console.log("datos de la card : ")
+            console.log(detail_data_view);
+
             localStorage.setItem("detail_view", JSON.stringify(detail_data_view));
 
             //toma el array de cards del historial. Si ya está actualiza date, sino lo guarda
             //si está vacío cargo history_array con []
             const history_array = JSON.parse(localStorage.getItem("history_array")) || [];
+
+            console.log(history_array);
 
             //Busco el índice del elemento
             const index = history_array.findIndex(item => item.id === card.dataset.id);
@@ -85,18 +91,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.log("Elemento encontrado: se actualizó la fecha");
             } else {
 
+                console.log("Elemento no encontrado. Se crea registro en history_array");
+
                 let history_item;
-
-
-                //console.log("nombre que va a guardar en history_array: " + card.dataset.name);
-                //card.dataset.name = "blabla bla";
-
-
 
                 //Guarda en historial los datos necesarios para mostrar la card...
                 switch(card.dataset.type){
                 
-                    case("driver"):
+                    case("drivers"):
                         history_item = {
                             type : card.dataset.type,
                             id : card.dataset.id,
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         };
                     break;
 
-                    case("circuit"):
+                    case("circuits"):
                         history_item = {
                             type : card.dataset.type,
                             id : card.dataset.id,
@@ -124,9 +126,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 };
 
+                console.log("history_item antes de pushear: " + history_item);
                 history_array.push(history_item);
 
             }
+
+            
+            console.log("history_array antes de guardar: ", history_array)
 
             //reemplazo todo el array con la modificacion
             localStorage.setItem("history_array", JSON.stringify(history_array));

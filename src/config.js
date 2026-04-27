@@ -30,7 +30,7 @@ export const wiki_API = "https://en.wikipedia.org/w/api.php?action=query&prop=pa
 
 //EXAMPLE   --> https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=Circuit_of_the_Americas
 
-export const wiki_API_v2 = "https://en.wikipedia.org/api/rest_v1/page/summary/"
+export const wiki_API_v2 = "https://es.wikipedia.org/api/rest_v1/page/summary/"
 
 
 /*
@@ -77,3 +77,16 @@ const results_race = "https://api.jolpi.ca/ergast/f1/2026/3/results/"
 /* Teams (se pide por temporada pero solo usamos la ultima)*/
 export const jolpica_constructors = "https://api.jolpi.ca/ergast/f1/2026/constructors"
 
+
+/* Estadísticas por piloto - Funcionan con driverId */
+export const jolpica_driver_standings = ""
+//example https://api.jolpi.ca/ergast/f1/drivers/hamilton/results/
+//utilizan limite de paginacion
+
+/* Estadísticas por circuito - Funcionan con circuitId */
+export const jolpica_circuit_standings = ""
+//example https://api.jolpi.ca/ergast/f1/circuits/adelaide/results/
+
+
+/* Tabla del campeonato de pilotos de la temporada actual */
+export const jolpica_championship_drivers = "https://api.jolpi.ca/ergast/f1/current/driverstandings/"

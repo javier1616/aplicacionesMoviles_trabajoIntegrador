@@ -1,4 +1,4 @@
-import { jolpica_url, jolpica_url_all, jolpica_constructors } from "../config.js";
+import { jolpica_url, jolpica_url_all, jolpica_constructors, jolpica_championship_drivers } from "../config.js";
 import { drivers_response } from "../response_mocks/drivers_mock.js";
 import { circuits_response } from "../response_mocks/circuits_mock.js";
 
@@ -29,7 +29,7 @@ export async function getPilotos(season,limit,offset){
       url +=  season + "/"
     }
 
-    url += `drivers`
+    url += `drivers/`
 
     //let params = `/?limit=${limit}&offset=${offset}`
 
@@ -50,7 +50,7 @@ export async function getCircuitos(season,limit,offset){
       url +=  season + "/"
     }
 
-    url += `circuits`
+    url += `circuits/`
 
     //let params = `/?limit=${limit}&offset=${offset}`
 
@@ -61,7 +61,6 @@ export async function getCircuitos(season,limit,offset){
     
     return circuitos.MRData.CircuitTable.Circuits;
 }
-
 
 export async function getImage(url){
 
@@ -101,8 +100,6 @@ export async function getAllPilotos(){
     let offset = 0;
     let total;
     let result = [];
-
-    let count = 2;
 
     let url = jolpica_url_all;
 
@@ -146,8 +143,6 @@ export async function getAllCircuitos(){
     let offset = 0;
     let total;
     let result = [];
-
-    let count = 2;
 
     let url = jolpica_url_all;
 
@@ -195,4 +190,62 @@ export async function getTeam(id){
                     c.constructorId === id);   
     
     return result;
+}
+
+
+export async function getResults(type,id){
+
+    let limit = 100;
+    let offset = 0;
+    let total;
+    let races = [];
+
+    let url = jolpica_url + `${type}/${id}/results`
+
+    let params = `?limit=${limit}&offset=${offset}`
+
+    console.log("obteniendo estadísticas...");
+
+    let results = await request( url + params );
+  
+    offset += parseInt(results.MRData.limit);
+    total = results.MRData.total;
+
+    console.log("offset: "+ offset + " total: " + total);
+
+    races.push(...results.MRData.RaceTable.Races);
+
+
+    while (offset < total){
+
+      params = `/?limit=${limit}&offset=${offset}`
+      results = await request( url + params );
+      
+      offset += parseInt(results.MRData.limit);
+      total = results.MRData.total;
+
+      races.push(...results.MRData.RaceTable.Races);
+
+    }
+
+    console.log("Total de registros encontrados: " + races.length);
+
+    return races;
+
+}
+
+export async function getCurrentSeasonDriversChampionship(){
+
+    let url = jolpica_championship_drivers;
+
+    let results = await request(url);
+    
+    //let result = results.MRData.ConstructorTable.Constructors.find(c => 
+    //                c.constructorId === id);
+    
+    console.log("obteniendo tabla de resultados del campeonato")
+    console.log(results);
+    
+    return results.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+
 }
