@@ -71,7 +71,7 @@ header{
     background-color: var(--background-color);
     /*border-radius: 10px;
     margin: 5px;*/
-    height: 10vh;
+    height: 10dvh;
     color: var(--text-color);
 }
 
@@ -189,7 +189,7 @@ h3{
     display:grid;
     grid-template-rows: auto /*auto*/;
     place-items: center start;
-    margin-left:1vh;
+    margin-left:1dvh;
 }
 
 .history-card .card-description{
@@ -454,7 +454,7 @@ input[type="radio"]:checked + label {
 }
 
 #map{
-    height: 30vh;
+    height: 30dvh;
     width: 90%;
     margin-top:4em;
     border-radius: 10px;
@@ -507,7 +507,7 @@ li{
 }
 
 #detail-img{
-    width:15vh;
+    width:15dvh;
     height:auto;
     border-radius:10px;
 }
@@ -691,8 +691,8 @@ li{
     background: var(--background-color);
     margin-top:0.25em;
     color: var(--text-color);
-    padding-top:10vh;
-    padding-bottom:10vh;
+    padding-top:10dvh;
+    padding-bottom:10dvh;
 }
 
 .home-team-button{
@@ -717,14 +717,14 @@ li{
     background: var(--background-color);
     margin-top:0.25em;
     color: var(--text-color);
-    padding-top:2vh;
-    padding-bottom:2vh;
+    padding-top:2dvh;
+    padding-bottom:2dvh;
 }
 
 #team-logo-image-url{
     display:grid;
     place-items:center;
-    margin: 4vh;
+    margin: 4dvh;
     width: 20dvh;
     height: auto;
 }
@@ -801,7 +801,7 @@ li{
 }
 
 #team-drivers-container .driver-img {
-    width: 15vh;
+    width: 15dvh;
     height: auto;
     border-radius: 10px;
     height:100%;
@@ -817,8 +817,8 @@ li{
     background: var(--background-color);
     margin-top:0.25em;
     color: var(--text-color);
-    padding-top:2vh;
-    padding-bottom:2vh;
+    padding-top:2dvh;
+    padding-bottom:2dvh;
 }
 
 #championship-tables-container{
@@ -1088,6 +1088,74 @@ hr{
         height:20dvh;
     }
 
+    footer{
+        padding:10px;
+    }
+
+/* Vista home ------------------------------------------- */
+
+    #home-container{
+        gap:1em;
+        padding-top:5dvh;
+    }
+
+    #home-container div{
+        display:flex;
+        gap:3em;
+    }
+
+/* Vista teams ------------------------------------------ */
+
+
+    #team-container{
+        display:grid;
+        grid-template-areas:
+        "logo table"
+        "car car"    /* Cada fila tiene 2 cols. car ocupa toda la fila */
+        "team-drivers team-drivers"
+        "description description";
+        grid-template-rows: auto auto 1fr auto;
+        gap:1em;
+    }
+
+    #team-logo-image-url {
+        grid-area: logo;
+        max-height:40dvh;
+        width:auto;
+    }
+
+    #team-car-img { grid-area: car; }
+
+    #constructors-championship-table-position-container {
+        grid-area: table;
+        width:75%;
+    }
+
+    #team-drivers-container {
+        grid-area: team-drivers;
+        height: 50dvh;
+        padding: 4dvh;
+    }
+
+    #team-drivers-container .driver-container{
+        width:50%;
+    }
+
+    #team-drivers-container .driver-img{
+        width: 35dvh;
+        height: 100%;
+    }
+
+    #team-drivers-container .driver-container .team-driver-img-container{
+        /*width:100%;*/
+    }
+
+    #team-text { grid-area: description; }
+
+
+/* Vista location --------------------------------------- */
+
+
     #location-container{
         display:grid;
         grid-template-rows: auto;
@@ -1112,17 +1180,13 @@ hr{
         margin:0;
     }
 
-    footer{
-        padding:10px;
-    }
-
 }
 
 @media (min-width: 768px){
     
 }
 
-@media (min-width: 1024){
+@media (min-width: 1024px){
 
 }
 

@@ -23,7 +23,7 @@ function loadContacto() {
                     <div id="map"></div>
                     <h3 id="location-title">Información de contacto</h3>
                     <ul id="datosDeContacto">
-                        <li> Mendez Gabriel / Solís Javier </li>
+                        <li> Solís Javier / Mendez Gabriel</li>
                         <li> aplicacionesmoviles@unaj.edu.ar</li>
                         <li> (+54) 11 1234 5678</li>
                         <li> Calle 14, 1009 La Plata<br>Bs. As. Argentina </li>
