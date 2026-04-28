@@ -712,7 +712,7 @@ li{
 
 #team-container{
     display:grid;
-    grid-template-rows: auto auto auto auto 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
     place-items:center;
     background: var(--background-color);
     margin-top:0.25em;
@@ -784,7 +784,7 @@ li{
 
 #team-drivers-container{
     display:grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     place-items:center;
     width:100%;
 }
@@ -793,16 +793,18 @@ li{
     display:grid;
     grid-template-rows: 1fr auto;
     place-items:center;
+    height:100%;
 }
 
 .team-driver-img-container{
-    
+    height:100%;
 }
 
 #team-drivers-container .driver-img {
     width: 15vh;
     height: auto;
     border-radius: 10px;
+    height:100%;
 }
 
 /* ----------------------------------------------------------- */
@@ -822,7 +824,7 @@ li{
 #championship-tables-container{
     display:grid;
     place-items:center;
-    width:90%;
+    width:100%;
 }
 
 #championship-tables-container .table-title{
@@ -1075,8 +1077,23 @@ hr{
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 
+/* A medida que se incrementa el tamaño se va modificando... */
 
-@media (min-width: 667px){  /*Para iPhone SE en horizontal*/
+@media (min-width: 481px){
+
+}
+
+@media (min-width: 768px){
+    
+}
+
+@media (min-width: 1024){
+
+}
+
+
+/*
+@media (min-width: 667px){  /*Para iPhone SE en horizontal*
     #view{
         grid-template-rows: auto 1fr auto;
         grid-template-areas:
@@ -1093,6 +1110,7 @@ hr{
         "view";
     }
 }
+*/
 
 @media (min-width: 768px){
     .navbar-icon-description{
