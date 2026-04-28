@@ -1077,9 +1077,44 @@ hr{
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 
-/* A medida que se incrementa el tamaño se va modificando... */
+/* A medida que se incrementa el tamaño se va modificando (mobile-first) */
+/* Diseño base --> Mobile - portrait                                     */
 
 @media (min-width: 481px){
+
+/* Mobile - landscape */
+
+    header{
+        height:20dvh;
+    }
+
+    #location-container{
+        display:grid;
+        grid-template-rows: auto;
+        grid-template-columns: 7fr 5fr;
+        place-items : center;
+    }
+
+    #location-title{
+        display:none;
+    }
+
+    #map{
+        display:grid;
+        place-items:center;
+        margin-top:0;
+        width:80%;
+        height:40dvh;
+        vertical-align:middle;
+    }
+
+    #datosDeContacto{
+        margin:0;
+    }
+
+    footer{
+        padding:10px;
+    }
 
 }
 

@@ -21,7 +21,7 @@ function loadContacto() {
     return `<main>
                 <div id="location-container">
                     <div id="map"></div>
-                    <h3>Información de contacto</h3>
+                    <h3 id="location-title">Información de contacto</h3>
                     <ul id="datosDeContacto">
                         <li> Mendez Gabriel / Solís Javier </li>
                         <li> aplicacionesmoviles@unaj.edu.ar</li>
