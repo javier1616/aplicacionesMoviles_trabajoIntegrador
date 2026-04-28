@@ -691,6 +691,7 @@ li{
 
 #team-container{
     display:grid;
+    grid-template-rows: auto auto auto auto 1fr;
     place-items:center;
     background: var(--background-color);
     margin-top:0.25em;
@@ -699,9 +700,88 @@ li{
     padding-bottom:2vh;
 }
 
+#team-logo-image-url{
+    display:grid;
+    place-items:center;
+    margin: 4vh;
+    width: 20dvh;
+    height: auto;
+}
+
 #team-car-img{
     width:95%;
     height:auto;
+    margin:2vh;
+}
+
+#team-text{
+    width: 90%;
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 2em;
+}
+
+#constructors-championship-table-position-container{
+    margin-top:1em;
+    margin-bottom:1em;
+    font-size: 0.75rem;
+    width:90%;
+}
+
+#constructors-championship-one-row-title{
+    display: grid;
+    place-items:center;
+    margin:1em;
+}
+
+
+#constructors-championship-one-row-table {
+    border-collapse: collapse;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    width:100%;
+}
+
+#constructors-championship-one-row-table th,
+#constructors-championship-one-row-table td {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0.5em 0.5em;
+    vertical-align: middle;
+    text-align:center;
+}
+
+#constructors-championship-one-row-table tr:last-child td {
+    border-bottom: none;
+}
+
+/*primera columna de las tablas alineada a la izquierda*/
+#constructors-championship-one-row-table td:first-child,
+#constructors-championship-one-row-table th:first-child {
+    text-align: left;
+}
+
+#team-drivers-container{
+    display:grid;
+    grid-template-columns: auto auto;
+    place-items:center;
+    width:100%;
+}
+
+#team-drivers-container .driver-container{
+    display:grid;
+    grid-template-rows: 1fr auto;
+    place-items:center;
+}
+
+.team-driver-img-container{
+    
+}
+
+#team-drivers-container .driver-img {
+    width: 15vh;
+    height: auto;
+    border-radius: 10px;
 }
 
 /* ----------------------------------------------------------- */

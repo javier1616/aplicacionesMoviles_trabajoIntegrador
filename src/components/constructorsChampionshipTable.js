@@ -1,6 +1,6 @@
 export function constructorsChampionshipTable(constructors) {
 
-     let datosDeLaTabla = ``;
+    let datosDeLaTabla = ``;
     
     constructors.forEach(constructor => {
         datosDeLaTabla += `<tr>

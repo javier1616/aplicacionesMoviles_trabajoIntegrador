@@ -47,7 +47,7 @@ export async function getCircuitos(season,limit,offset){
     let url = jolpica_url;
 
     if(season != "0"){
-      url +=  season + "/"
+        url +=  season + "/"
     }
 
     url += `circuits/`
@@ -62,22 +62,16 @@ export async function getCircuitos(season,limit,offset){
     return circuitos.MRData.CircuitTable.Circuits;
 }
 
+//solo se usa para los logos de red bull y racing bull
 export async function getImage(url){
 
-    let wiki_result = await request(url + "&redirects=1&origin=*");
-    //se le agregan esos parametros para que, si existen redirecciones las siga
+    let wiki_result = await request(url);
 
-    const pages = wiki_result.query.pages;
+    return wiki_result.thumbnail?.source;
 
-    // convierto el objeto en array y agarro el primero
-    const page = Object.values(pages)[0];
-
-    const imageUrl = page.original?.source ?? null;  //si no hay imagen devuelve null
-    
-    return imageUrl;
 }
 
-/* Con algun que otro piloto no tengo datos en español, así que falla */
+/* Con algunos pilotos y equipos, no tengo datos en español, así que falla */
 /*
 export async function getImageAndExtract(url){
 
@@ -254,13 +248,13 @@ export async function getResults(type,id){
 
     while (offset < total){
 
-      params = `/?limit=${limit}&offset=${offset}`
-      results = await request( url + params );
-      
-      offset += parseInt(results.MRData.limit);
-      total = results.MRData.total;
+        params = `/?limit=${limit}&offset=${offset}`
+        results = await request( url + params );
 
-      races.push(...results.MRData.RaceTable.Races);
+        offset += parseInt(results.MRData.limit);
+        total = results.MRData.total;
+
+        races.push(...results.MRData.RaceTable.Races);
 
     }
 
