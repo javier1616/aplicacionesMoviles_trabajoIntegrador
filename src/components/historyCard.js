@@ -14,11 +14,10 @@ export function historyCard(data) {
     <div class="history-card card" data-type="${data.type}" data-id="${data.id}" data-url="${data.url}" data-name="${data.name}">
         <img src=${data.img} class="card-img-icon" alt="imagen">
         <div class="card-body">
-            <p class="card-title">${data.name}</p>
-            <p class="card-description">
-                Visto:<br>
-                ${fechaConFormato}
-            </p>
+            <ul class="card-description">
+                <li>${data.name}</li>
+                <li>Visto: ${fechaConFormato}</li>
+            </ul>
         </div>
     </div>`;
 }

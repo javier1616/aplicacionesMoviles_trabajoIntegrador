@@ -163,7 +163,7 @@ h3{
     border-radius: 10px;
     margin: 0.5em;
     width:100%;
-    height:13vh;
+    /*height:13vh;*/
     font-family: Arial, sans-serif;
     color : var(--background-color);
 }
@@ -187,7 +187,7 @@ h3{
 
 .history-card .card-body{
     display:grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto /*auto*/;
     place-items: center start;
     margin-left:1vh;
 }
@@ -195,44 +195,6 @@ h3{
 .history-card .card-description{
     margin-top: 0em;
     margin-bottom:0.25em;
-}
-
-.favorite-card{
-    display:grid;
-    grid-template-columns:auto 1fr auto;
-    place-items: center;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border-radius: 10px;
-    margin: 1em;
-    font-family: Arial, sans-serif;
-}
-
-.favorite-card img{
-    width: 3.5em;
-    height: 3.5em;
-    padding: 0.5em;
-    place-self:center;
-}
-
-.favorite-card .card-title{
-    margin-top: 0.5em;
-    margin-bottom:0.25em;
-    font-weight:600;
-}
-
-.favorite-card .card-text{
-    margin-top: 0.25em;
-    margin-bottom:0.7em;
-}
-
-.favorite-card .card-footer{
-    display: grid;
-    grid-template-rows: auto auto;
-}
-
-.favorite-card .card-footer button{
-    /*margin: 0.5em;*/
 }
 
 .driver-card{
@@ -246,7 +208,7 @@ h3{
 
 .driver-card .card-body{
     display:grid;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto /*auto auto auto*/;
     place-items: center start;
 }
 
@@ -256,8 +218,7 @@ h3{
     padding: 2px;
     font-weight:600;
     color: var(--background-color);
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0.5em;
 }
 
 .driver-card img{
@@ -372,6 +333,7 @@ input[type="radio"]:checked + label {
     display:grid;
     place-items:center;
     width:80%;
+    margin-top:1em;
 }
 
 #history-no-data{
@@ -413,9 +375,68 @@ input[type="radio"]:checked + label {
     height:3em;
 }
 
+.favorite-card{
+    display:grid;
+    grid-template-rows:auto 1fr;
+    place-items: center;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    border-radius: 10px;
+    margin: 1em;
+    font-family: Arial, sans-serif;
+    width:90%;
+}
+
+.favorite-card .card-body{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    place-items:center;
+    width:95%;
+}
+
+.favorite-card img{
+    width: 3.5em;
+    height: 3.5em;
+    padding: 0.5em;
+    place-self:center;
+    margin-left: 0;
+}
+
+.favorite-card .card-description{
+    display:grid;
+    place-items:center;
+}
+
+.favorite-card .card-title{
+    margin-top: 0.5em;
+    margin-bottom:0.25em;
+    font-weight:600;
+}
+
+.favorite-card .card-text{
+    margin-top: 0.25em;
+    margin-bottom:0.7em;
+}
+
+.favorite-card .card-footer{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.favorite-card .card-footer button{
+    /*margin: 0.5em;*/
+}
+
 .favorite-card .card-footer button{
     border:none;
     background:transparent;
+}
+
+.favorite-card .card-comentario{
+    overflow-wrap: anywhere;
+    word-break: break-word; /* fallback */
+    width:80%;
+    margin:0.5em;
 }
 
 /* ----------------------------------------------------------- */

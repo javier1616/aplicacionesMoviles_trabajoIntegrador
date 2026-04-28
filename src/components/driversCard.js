@@ -6,10 +6,10 @@ export function driverCard(data) {
         <div class="card-body">
             <ul class="card-description">
                 <li> Name: ${data.givenName} ${data.familyName}</li>
-                <li> Code: ${data.code} </li>
-                <li> Number: ${data.permanentNumber}</li>
+                <!--li> Code: ${data.code} </li>
+                <li> Number: ${data.permanentNumber}</li-->
                 <li> Nacionality: ${data.nationality} </li>
-            <ul>
+            </ul>
         </div>
     </div>`;
 }
