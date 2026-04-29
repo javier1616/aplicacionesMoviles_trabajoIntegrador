@@ -149,6 +149,7 @@ h3{
 .error{
     display:none;
     color: var(--text-color-red);
+    font-weight:600;
 }
 
 /* ----------------------------------------------------------- */
@@ -1146,12 +1147,98 @@ hr{
         height: 100%;
     }
 
-    #team-drivers-container .driver-container .team-driver-img-container{
-        /*width:100%;*/
-    }
-
     #team-text { grid-area: description; }
 
+/* CARDS Vista Historial / Favoritos / Busqueda --------- */
+
+    #history-container,
+    #favorite-container,
+    #accordion-container{
+        padding-bottom:10dvh;
+    }
+
+    #history-card-container{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:1em;
+    }
+
+    #pilotos-card-container,
+    #circuitos-card-container{
+        width:95%;
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:1em;
+    }
+
+    #favorite-card-container{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:1em;
+    }
+
+    .favorite-card{
+        height:45dvh;
+    }
+
+/* Vista Championship ----------------------------------- */
+
+    #championship-container{
+        padding-bottom:10dvh;
+    }
+
+    #drivers-table-container{
+        width:100%;
+    }
+
+    #drivers-championship-container{
+        display:grid;
+        place-items:center;
+    }
+
+    #drivers-championship-container .table{
+        width:95%;
+    }
+
+    
+    #constructors-table-container{
+        /*display:grid;
+        place-items:center;*/
+        width:100%;
+    }
+
+    
+    #constructors-championship-container{
+        display:grid;
+        place-items:center;
+    }
+
+    #constructors-championship-container .table{
+        width:95%;
+    }
+
+/* Vista detalles --------------------------------------- */
+
+    #detail-header{
+        display:grid;
+        place-items:center;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 0.5em;
+        margin-bottom: 0;
+    }
+
+    #info-container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #detail-img-container img{
+        height: 40dvh;
+        width: auto;
+    }
+
+    #detail-text{
+        margin-bottom: 10dvh;
+    }
 
 /* Vista location --------------------------------------- */
 

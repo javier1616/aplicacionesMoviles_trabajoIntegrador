@@ -22,7 +22,7 @@ export function modalFavoritos(){
                         </div>
                         <small id="favoritos-error-priority" class="error"></small>
                         <div id="motivo-container">
-                            <span class="radio-motivo">Motivo</span>
+                            <span class="radio-motivo">Elija un motivo</span>
                             <input type="radio" id="favoritos-m-rendimiento" name="motivo" value="Rendimiento">
                             <label for="favoritos-m-rendimiento">Rendimiento</label>
                             <input type="radio" id="favoritos-m-estrategia" name="motivo" value="Estrategia">
