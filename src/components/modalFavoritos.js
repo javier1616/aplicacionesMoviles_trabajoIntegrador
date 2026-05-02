@@ -8,17 +8,17 @@ export function modalFavoritos(){
                             <hr>
                         </div>
                         <div id="priority-container" class="radio-container">
-                            <span class="radio-priority">Prioridad</span>
-                            <input type="radio" id="favoritos-p-1" name="priority" value="1">
-                            <label for="favoritos-p-1">1</label>
-                            <input type="radio" id="favoritos-p-2" name="priority" value="2">
-                            <label for="favoritos-p-2">2</label>
-                            <input type="radio" id="favoritos-p-3" name="priority" value="3">
-                            <label for="favoritos-p-3">3</label>
-                            <input type="radio" id="favoritos-p-4" name="priority" value="4">
-                            <label for="favoritos-p-4">4</label>
-                            <input type="radio" id="favoritos-p-5" name="priority" value="5">
-                            <label for="favoritos-p-5">5</label>
+                                <span class="radio-priority">Prioridad</span>
+                                <input type="radio" id="favoritos-p-1" name="priority" value="1">
+                                <label for="favoritos-p-1">1</label>
+                                <input type="radio" id="favoritos-p-2" name="priority" value="2">
+                                <label for="favoritos-p-2">2</label>
+                                <input type="radio" id="favoritos-p-3" name="priority" value="3">
+                                <label for="favoritos-p-3">3</label>
+                                <input type="radio" id="favoritos-p-4" name="priority" value="4">
+                                <label for="favoritos-p-4">4</label>
+                                <input type="radio" id="favoritos-p-5" name="priority" value="5">
+                                <label for="favoritos-p-5">5</label>
                         </div>
                         <small id="favoritos-error-priority" class="error"></small>
                         <div id="motivo-container">
@@ -36,14 +36,13 @@ export function modalFavoritos(){
                         <div id="comentario-container">
                             <label for="favoritos-comentario">Comentario</label>
                             <textarea id="favoritos-comentario" name="comentario"></textarea>
-                            <small id="favoritos-error-comentario" class="error"></small>
                         </div>
+                        <small id="favoritos-error-comentario" class="error"></small>
                     </form>
                     <div class="actions">
                         <button id="modal-add-favorite-cancel-btn">Cancelar</button>
                         <button id="modal-add-favorite-btn">Agregar</button>
                     </div>
-
                 </div>
             </div>`;
 }

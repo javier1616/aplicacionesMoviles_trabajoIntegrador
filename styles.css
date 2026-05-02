@@ -1008,6 +1008,7 @@ hr{
 #priority-container{
     display:grid;
     grid-template-columns: auto auto auto auto auto auto;
+    place-items:center;
 }
 
 #motivo-container{
@@ -1030,6 +1031,10 @@ hr{
     height:20dvh;
 }
 
+#favoritos-error-comentario{
+    font-size: 0.8rem;
+}
+
 .radio-priority{
     color: var(--text-color);
     font-weight:bold;
@@ -1044,9 +1049,9 @@ hr{
 .input-form{
     width: 95%;
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto auto auto auto 1fr auto;
     place-items: center;
-    gap: 2em;
+    gap: 1em;
 }
 
 
@@ -1267,9 +1272,64 @@ hr{
         margin:0;
     }
 
+/* Modal favoritos --------------------------------------- */
+
+    #modal-add-favorite{
+        height:75dvh;
+        max-width:170dvh;
+    }
+
+    #favoritos-form{
+        display:grid;
+        grid-template-areas:
+        " header header "
+        " prioridad prioridad "
+        " errorprioridad errorprioridad"
+        " motivo comentario "
+        " errormotivo errorcomentario"; 
+        margin:0;
+        gap:0.5em;
+    }
+
+    #favoritos-form-header{
+        grid-area: header;
+    }
+
+    #priority-container{
+        grid-area: prioridad;
+    }
+
+    #motivo-container{
+        grid-area: motivo;
+    }
+
+    #comentario-container{
+        grid-area: comentario;
+        display:flex;
+        flex-direction:column;
+        gap:1em;
+    }
+
+    #favoritos-error-priority{
+        grid-area: errorprioridad;
+    }
+
+    #favoritos-error-motivo{
+        grid-area: errormotivo;
+        display:grid;
+    }
+
+    #favoritos-error-comentario{
+        display:grid;
+        grid-area: errorcomentario;
+    }
+
+
 }
 
 @media (min-width: 768px){
+
+    
     
 }
 
