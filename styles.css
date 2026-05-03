@@ -1,6 +1,7 @@
 
 :root {
     --nav-height: 60px;
+    --nav-height-tablet: 10dvh;
     --nav-z-index: 100;
     --map-z-index: 0;
     --background-color: #303037;
@@ -1329,11 +1330,253 @@ hr{
 
 @media (min-width: 768px){
 
+    /* Tablet - Asus Zenbook Fold */
+
+    #view{
+    /*height: 90vh;  /* si la pagina no requiere scrollear con 90vh se ve bien, header, main y footer */
+    height: calc( 100dvh - var(--nav-height-tablet));
+    padding-bottom: var(--nav-height-tablet);
+    }
+
+    header{
+        height:15dvh;
+        font-size: 2rem;
+    }
+
+    nav{
+        height: var(--nav-height-tablet);
+    }
+
+    .home-img-team-icon{
+        width:6em;
+        height:6em;
+    }
+
+    .icono{
+        width:5em;
+        height:5em;
+    }
+
+    footer{
+        height:6dvh;
+        padding:10px;
+        font-size:1.5em;
+    }
+
+/* Vista home ------------------------------------------- */
+
+    #home-container{
+        gap:1em;
+        padding-top:5dvh;
+    }
+
+    #home-container div{
+        display:flex;
+        gap:3em;
+    }
+
+/* Vista teams ------------------------------------------ */
+
+    #team-drivers-container .driver-img {
+        width: 25dvh;
+        height: 35dvh;
+    }
+
+
+    #team-drivers-container{
+        font-size: 1.75em;
+        height:auto;
+        padding:2dvh;
+    }
+
+    #team-drivers-container .driver-container {
+        width: 70%;
+        gap:1em;
+    }
+
+    #team-text{
+        font-size:1.5em;
+        margin-top:0em;
+    }
+
+    #constructors-championship-one-row-title {
+        margin: 1em 0em;
+    }
+
+    #constructors-championship-table-position-container{
+        font-size:1em;
+        width: 90%;
+        padding-right: 3em;
+    }
+
+    #constructors-championship-one-row-table {
+        border: 0px;
+    }
+
+/* Vista Busqueda ------------------------------------------- */
+
+    .accordion-item{
+        font-size: 2em;
+    }
+
+    .input-search{
+        font-size: 1em;
+        color: var(--background-color);
+    }
+
+    .accordion-item-header{
+        font-size:1em;
+    }
+
+    .select-box{
+        font-size: 0.75em;
+        color: var(--background-color);
+    }
+
+    .driver-card img {
+        width: 2em;
+        height: 2em;
+        padding: 0.5em;
+        place-self: center;
+    }
+
+    .card-img-icon{
+        margin-left: 0;
+    }
+
+    .accordion-item-body li{
+        font-size: 1.2em;
+    }
+
+    #pilotos-card-container{
+        gap:0.1em;
+    }
+
+
+/* Vista Favoritos ------------------------------------------ */
+
+    #favorite-card-container {
+        padding-top: 1.5em;
+    }
+
+    .favorite-card {
+        height: 12dvh;
+    }
+
+    #favoritos-form{
+        display:grid;
+        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-areas:
+            "header"
+            "prioridad"
+            "errorprioridad"
+            "motivo"
+            "errormotivo"
+            "comentario"
+            "errorcomentario";
+        height:100%;
+        font-size: 2em;
+        margin-top:1em;
+        gap:0.5em;
+    }
+
+    #favoritos-error-comentario{
+        font-size:1em;
+        margin-bottom:1em;
+    }
+
+    #modal-add-favorite-cancel-btn,
+    #modal-add-favorite-btn{
+        font-size:2em;
+    }
+
+
+/* Vista Detalles ------------------------------------------- */
+
+    #detail-header{
+        grid-template-columns: 9fr 3fr;
+        margin-top: 2em;
+        margin-bottom: 1em;     
+    }
+
+    #detail-title{
+        font-size: 2.75em;   
+    }
+
+    #favorite-btn{
+        width:5em;
+    }
+
+    #stats-table-container,
+    #table-container,
+    #championship-table-position-container {
+        font-size: 1.5rem;
+    }
     
-    
+    #last-races-table,
+    #driver-championship-one-row-table{
+        border:0px;
+    }
+
+    #detail-text{
+        font-size:1.6em;
+        margin-bottom:5dvh;
+    }
+
+/* Vista Historial ------------------------------------------ */
+
+    .history-card{
+        height:10dvh;
+    }
+
+    .history-card img{
+        margin-left:1em;
+    }
+
+    .history-card .card-description{
+        display:grid;
+        gap:1em;
+    }
+
+    #history-container .card-description li{
+        font-size: 1.5em;
+    }
+
+    /*
+    #history-card-container img {
+        width: 2em;
+        height: 2em;
+        padding: 0.5em;
+        place-self: center;
+    }*/
+
+/* Vista Contacto ------------------------------------------- */
+
+    #location-container{
+        grid-template-rows: auto auto auto;
+        grid-template-columns:auto;
+        font-size:1.5em;
+    }
+
+    #location-title{
+        display:block;
+    }
+
+    #datosDeContacto{
+        font-size:1em;
+    }
+
+    #favoritos-comentario{
+        font-size:1em;
+    }
+
+
 }
 
+
 @media (min-width: 1024px){
+
+
 
 }
 
@@ -1356,10 +1599,13 @@ hr{
         "view";
     }
 }
-*/
 
 @media (min-width: 768px){
+
     .navbar-icon-description{
         display: block;
     }
+
 }
+
+*/
