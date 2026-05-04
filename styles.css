@@ -33,6 +33,10 @@ body{
     margin: 0;
 }
 
+h1{
+    display:block;
+}
+
 .hidden{
     display:none;
 }
@@ -1576,36 +1580,71 @@ hr{
 
 @media (min-width: 1024px){
 
-
-
-}
-
-
-/*
-@media (min-width: 667px){  /*Para iPhone SE en horizontal*
-    #view{
-        grid-template-rows: auto 1fr auto;
-        grid-template-areas:
-        "header"
-        "main"
-        "footer";
-        height:100vh;
-    }
-    
     body{
+        display:grid;
         grid-template-rows:auto 1fr;
         grid-template-areas:
         "nav"
         "view";
     }
-}
 
-@media (min-width: 768px){
+
+    #nav{
+        grid-area:nav;
+        position:sticky;
+        top:0;
+        height: var(--nav-height);
+    }
+
+    #view{
+        grid-area:view;
+        padding-bottom:0;
+        /* height: calc( 100dvh - var(--nav-height-tablet));*/
+    }
+
+    #modal-container{
+        display:none; /* para que funcione el grid-areas*/
+    }
 
     .navbar-icon-description{
         display: block;
+        color: var(--text-color);
+        font-weight:600;
+        fon-size:2em;
+    }
+
+    .navbar-button img{
+        display:none;
+    }
+
+    #navbar-home-button img{
+        display:grid;
+    }
+
+    #navbar-home-button span{
+        display:none;
+    }
+
+    .navbar-button.active {
+    text-shadow: 0 0 8px rgba(225, 6, 0, 0.7);
+    }
+
+    .navbar-button.active .navbar-icon-description {
+        font-weight: bold;
+        color: var(--text-color-red);
+    }
+
+    header h1{
+        display:none;
+    }
+
+    #header-img{
+        height:0%;
+    }
+
+    header{
+        height:0dvh;
     }
 
 }
 
-*/

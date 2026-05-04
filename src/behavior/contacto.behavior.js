@@ -12,7 +12,6 @@ export async function contactoBehavior() {
         var map = L.map('map').setView([-34.9215, -57.9536], 16);  //mas zoom en desktop
     }
 
-    
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,

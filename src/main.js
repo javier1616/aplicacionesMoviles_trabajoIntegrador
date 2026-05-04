@@ -1,5 +1,5 @@
 import { render, initRouter } from "./router.js";
-import { Navbar } from "./components/navbar.js";
+import { Navbar, initNavbar } from "./components/navbar.js";
 import { initDataStore } from "./utils/store.js";
 import { getPilotosStore, getCircuitosStore } from "./utils/store.js";
 import { modalFavoritos } from "./components/modalFavoritos.js";
@@ -146,6 +146,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
+    //uso otro listener porque el nav esta fuera del view, podrias unificarlo igual...
+    document.getElementById("nav").addEventListener("click", (e) => {
+        
+        const navBtn = e.target.closest(".navbar-button");
+        if (!navBtn) return;
+
+        const route = navBtn.dataset.route;
+        window.navigate(route);
+        setActiveNav(route);  //marca el boton del navbar como activo (se usa para estilar en desktop)
+    });
+
+
+
     //renderiza Home
     initRouter();
 
@@ -155,6 +168,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     nav_component.innerHTML = Navbar();
 
     nav.replaceChildren(...nav_component.children);
+
+    initNavbar(); //lo necesito para modificar imagenes dependiendo de la resolucion del render
 
     render();
 
@@ -172,3 +187,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     
 });
 
+
+
+function setActiveNav(routeActual) {
+    document.querySelectorAll(".navbar-button").forEach(btn => {
+        if (btn.dataset.route === routeActual) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
