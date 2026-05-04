@@ -1588,7 +1588,6 @@ hr{
         "view";
     }
 
-
     #nav{
         grid-area:nav;
         position:sticky;
@@ -1610,7 +1609,7 @@ hr{
         display: block;
         color: var(--text-color);
         font-weight:600;
-        fon-size:2em;
+        font-size:2em;
     }
 
     .navbar-button img{
@@ -1634,6 +1633,10 @@ hr{
         color: var(--text-color-red);
     }
 
+    #icon-home{
+        width: 100%;
+    }
+
     header h1{
         display:none;
     }
@@ -1645,6 +1648,61 @@ hr{
     header{
         height:0dvh;
     }
+
+    .navbar-icon-description{
+        font-size:1.5em;
+    }
+
+
+
+    /* CARDS Vista Historial / Favoritos / Busqueda --------- */
+
+    #history-card-container,
+    #favorite-card-container{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4,1fr);
+        height: 95%;
+        gap:1em;
+    }
+
+    .history-card{
+        height: 13dvh;
+    }
+
+    .history-card img{
+        padding: 0em;
+    }
+    
+    /*
+    #history-container,
+    #favorite-container,
+    #accordion-container{
+        padding-bottom:10dvh;
+    }*/
+
+    
+
+    /*
+    #pilotos-card-container,
+    #circuitos-card-container{
+        width:95%;
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:1em;
+    }
+
+    #favorite-card-container{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:1em;
+    }
+
+    .favorite-card{
+        height:45dvh;
+    }
+
+    */
 
 }
 
