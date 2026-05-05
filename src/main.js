@@ -145,6 +145,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
+    
+    //Registro del Service Worker para habilitar funcionalidades PWA
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then((reg) => {
+                    console.log("Service Worker registrado:", reg.scope);
+                })
+                .catch((err) => {
+                    console.error("Error registrando SW:", err);
+                });
+        });
+    }
+
 
     //uso otro listener porque el nav esta fuera del view, podrias unificarlo igual...
     document.getElementById("nav").addEventListener("click", (e) => {
