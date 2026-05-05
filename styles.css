@@ -513,7 +513,7 @@ li{
 }
 
 #detail-img{
-    width:15dvh;
+    width:15dvh;  /*deberia ser dvw*/
     height:auto;
     border-radius:10px;
 }
@@ -731,7 +731,7 @@ li{
     display:grid;
     place-items:center;
     margin: 4dvh;
-    width: 20dvh;
+    width: 20dvh;  /* dvw */
     height: auto;
 }
 
@@ -807,7 +807,7 @@ li{
 }
 
 #team-drivers-container .driver-img {
-    width: 15dvh;
+    width: 15dvh;  /* dvw */
     height: auto;
     border-radius: 10px;
     height:100%;
@@ -1153,7 +1153,7 @@ hr{
     }
 
     #team-drivers-container .driver-img{
-        width: 35dvh;
+        width: 35dvh;   /* dvw*/
         height: 100%;
     }
 
@@ -1281,7 +1281,7 @@ hr{
 
     #modal-add-favorite{
         height:75dvh;
-        max-width:170dvh;
+        max-width:170dvh;   /*dvw*/
     }
 
     #favoritos-form{
@@ -1382,7 +1382,7 @@ hr{
 /* Vista teams ------------------------------------------ */
 
     #team-drivers-container .driver-img {
-        width: 25dvh;
+        width: 25dvh;   /*dvw*/
         height: 35dvh;
     }
 
@@ -1601,9 +1601,10 @@ hr{
         /* height: calc( 100dvh - var(--nav-height-tablet));*/
     }
 
+    /*
     #modal-container{
-        display:none; /* para que funcione el grid-areas*/
-    }
+        display:none; /* para que funcione el grid-areas*
+    }*/
 
     .navbar-icon-description{
         display: block;
@@ -1658,7 +1659,9 @@ hr{
     /* CARDS Vista Historial / Favoritos / Busqueda --------- */
 
     #history-card-container,
-    #favorite-card-container{
+    #favorite-card-container,
+    #pilotos-card-container,
+    #circuitos-card-container{
         display:grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4,1fr);
@@ -1674,35 +1677,48 @@ hr{
         padding: 0em;
     }
     
+    /* Vista Championship ----------------------------------- */
+
+    #championship-tables-container{
+        grid-template-columns: 1fr 1fr;
+        place-items: start center;
+    }
+
+    /* Modal ------------------------------------------------ */
+
     /*
-    #history-container,
-    #favorite-container,
-    #accordion-container{
-        padding-bottom:10dvh;
+    #modal-container{
+        display: block;
+        position:fixed;
+        width: 100dvw;
+        height: 100dvh;
+    }
+
+    #modal-container .hidden {
+        display: none;
     }*/
 
-    
+    /* Formulario favoritos --------------------------------- */
 
-    /*
-    #pilotos-card-container,
-    #circuitos-card-container{
-        width:95%;
-        display:grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap:1em;
+    #favoritos-form {
+        display: grid;
+        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "header header" 
+        "prioridad prioridad" 
+        "errorprioridad errorprioridad" 
+        "motivo comentario"
+        "errormotivo errorcomentario";
+        height: 100%;
+        font-size: 2em;
+        margin-top: 1em;
+        gap: 0.5em;
     }
 
-    #favorite-card-container{
-        display:grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap:1em;
+    #favoritos-error-comentario {
+        font-size: 0.8em;
     }
-
-    .favorite-card{
-        height:45dvh;
-    }
-
-    */
 
 }
 
